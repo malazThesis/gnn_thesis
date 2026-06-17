@@ -1,0 +1,16 @@
+{
+  "dataset": "PubMed",
+  "model": "GCNPairNorm",
+  "seed": 2,
+  "num_layers": 16,
+  "hidden_channels": 128,
+  "epochs": 200,
+  "learning_rate": 0.01,
+  "weight_decay": 0.0005,
+  "final_train_acc": 0.95,
+  "final_val_acc": 0.69,
+  "final_test_acc": 0.688,
+  "best_epoch": 179,
+  "best_val_acc": 0.764,
+  "best_test_acc_at_best_val": 0.742
+}

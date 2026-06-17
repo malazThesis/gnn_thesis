@@ -1,0 +1,17 @@
+{
+  "topology": "CrossedRing",
+  "model": "GAT",
+  "seed": 2,
+  "distance": 6,
+  "target_node": 6,
+  "num_layers": 6,
+  "hidden_channels": 32,
+  "epochs": 150,
+  "learning_rate": 0.005,
+  "weight_decay": 0.0,
+  "final_train_acc": 0.5,
+  "final_test_acc": 0.5,
+  "best_epoch": 114,
+  "best_test_acc": 0.625,
+  "chance_level": 0.125
+}

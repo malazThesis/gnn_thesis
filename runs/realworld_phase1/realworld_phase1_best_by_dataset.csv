@@ -1,0 +1,4 @@
+dataset,model,seed,num_layers,hidden_channels,epochs,learning_rate,weight_decay,final_train_acc,final_val_acc,final_test_acc,best_epoch,best_val_acc,best_test_acc_at_best_val
+CiteSeer,GCN,1,4,64,200,0.01,0.0005,0.9916666666666667,0.636,0.653,5,0.714,0.702
+Cora,GAT,1,2,64,200,0.005,0.0,1.0,0.782,0.808,159,0.798,0.81
+PubMed,GCN,1,2,64,200,0.01,0.0005,1.0,0.784,0.792,45,0.794,0.785

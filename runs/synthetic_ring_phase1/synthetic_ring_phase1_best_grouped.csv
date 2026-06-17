@@ -1,0 +1,4 @@
+model,topology,distance,num_layers,hidden_channels,mean_best_test_acc,std_best_test_acc,mean_final_test_acc,std_final_test_acc,mean_best_epoch,std_best_epoch,mean_final_train_acc,num_seeds
+GAT,Ring,2,2,32,1.0,0.0,1.0,0.0,1.0,0.0,1.0,3
+GCN,Ring,2,2,32,1.0,0.0,1.0,0.0,1.0,0.0,1.0,3
+GraphSAGE,Ring,2,2,32,1.0,0.0,1.0,0.0,1.0,0.0,1.0,3

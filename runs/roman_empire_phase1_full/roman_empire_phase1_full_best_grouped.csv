@@ -1,0 +1,2 @@
+dataset,model,num_layers,hidden_channels,mean_best_test_acc,std_best_test_acc,mean_best_val_acc,std_best_val_acc,mean_final_test_acc,std_final_test_acc,mean_best_epoch,std_best_epoch,num_splits
+Roman-empire,GraphSAGE,4,128,0.7942110836569009,0.005096904016305554,0.7969638128861429,0.004632982565260891,0.7935051182492058,0.004529562667353848,194.3,4.3982319680122,10

@@ -1,0 +1,17 @@
+{
+  "dataset": "Amazon-Photo",
+  "model": "GCNPairNorm",
+  "seed": 1,
+  "split_idx": 3,
+  "num_layers": 16,
+  "hidden_channels": 128,
+  "epochs": 200,
+  "learning_rate": 0.01,
+  "weight_decay": 0.0005,
+  "final_train_acc": 0.825,
+  "final_val_acc": 0.758,
+  "final_test_acc": 0.7207439198855508,
+  "best_epoch": 198,
+  "best_val_acc": 0.77,
+  "best_test_acc_at_best_val": 0.7286123032904149
+}

@@ -1,0 +1,17 @@
+{
+  "dataset": "Amazon-Photo",
+  "model": "GCN",
+  "seed": 1,
+  "split_idx": 8,
+  "num_layers": 32,
+  "hidden_channels": 128,
+  "epochs": 200,
+  "learning_rate": 0.01,
+  "weight_decay": 0.0005,
+  "final_train_acc": 0.35,
+  "final_val_acc": 0.438,
+  "final_test_acc": 0.4150214592274678,
+  "best_epoch": 159,
+  "best_val_acc": 0.448,
+  "best_test_acc_at_best_val": 0.43390557939914165
+}

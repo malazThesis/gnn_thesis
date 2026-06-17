@@ -1,0 +1,17 @@
+{
+  "dataset": "Amazon-Photo",
+  "model": "GATPairNorm",
+  "seed": 1,
+  "split_idx": 1,
+  "num_layers": 8,
+  "hidden_channels": 128,
+  "epochs": 200,
+  "learning_rate": 0.005,
+  "weight_decay": 0.0,
+  "final_train_acc": 0.65,
+  "final_val_acc": 0.774,
+  "final_test_acc": 0.7683834048640915,
+  "best_epoch": 186,
+  "best_val_acc": 0.778,
+  "best_test_acc_at_best_val": 0.7274678111587983
+}

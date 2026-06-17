@@ -1,0 +1,10 @@
+topology,model,distance,num_layers,hidden_channels,mean_best_test_acc,std_best_test_acc,mean_final_test_acc,std_final_test_acc,mean_best_epoch,std_best_epoch,mean_final_train_acc,num_seeds
+CliquePath,GAT,2,2,64,1.0,0.0,1.0,0.0,1.0,0.0,1.0,3
+CliquePath,GCN,2,2,64,1.0,0.0,1.0,0.0,1.0,0.0,1.0,3
+CliquePath,GraphSAGE,2,2,64,1.0,0.0,1.0,0.0,1.0,0.0,1.0,3
+CrossedRing,GAT,2,2,64,1.0,0.0,1.0,0.0,1.0,0.0,1.0,3
+CrossedRing,GCN,2,2,64,1.0,0.0,1.0,0.0,1.0,0.0,1.0,3
+CrossedRing,GraphSAGE,2,2,64,1.0,0.0,1.0,0.0,1.0,0.0,1.0,3
+Ring,GAT,4,4,64,1.0,0.0,1.0,0.0,1.0,0.0,1.0,3
+Ring,GCN,4,2,64,0.125,0.0,0.125,0.0,1.0,0.0,0.125,3
+Ring,GraphSAGE,4,2,64,0.125,0.0,0.125,0.0,1.0,0.0,0.125,3

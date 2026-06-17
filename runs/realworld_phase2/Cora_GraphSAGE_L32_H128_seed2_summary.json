@@ -1,0 +1,16 @@
+{
+  "dataset": "Cora",
+  "model": "GraphSAGE",
+  "seed": 2,
+  "num_layers": 32,
+  "hidden_channels": 128,
+  "epochs": 200,
+  "learning_rate": 0.01,
+  "weight_decay": 0.0005,
+  "final_train_acc": 0.14285714285714285,
+  "final_val_acc": 0.114,
+  "final_test_acc": 0.103,
+  "best_epoch": 1,
+  "best_val_acc": 0.316,
+  "best_test_acc_at_best_val": 0.319
+}

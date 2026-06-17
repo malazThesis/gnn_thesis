@@ -1,0 +1,8 @@
+{
+  "experiment_id": 0,
+  "dataset": "Cora",
+  "model": "GCN",
+  "num_layers": 2,
+  "hidden_channels": 64,
+  "seed": 1
+}

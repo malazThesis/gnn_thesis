@@ -1,0 +1,4 @@
+dataset,model,num_layers,hidden_channels,mean_best_test_acc,std_best_test_acc,mean_best_val_acc,std_best_val_acc,mean_final_test_acc,std_final_test_acc,mean_best_epoch,std_best_epoch,num_seeds
+CiteSeer,GraphSAGE,2,128,0.706,0.0,0.72,0.0,0.712,0.0,173.0,0.0,1
+Cora,GAT,2,64,0.81,0.0,0.798,0.0,0.808,0.0,159.0,0.0,1
+PubMed,GCN,2,64,0.785,0.0,0.794,0.0,0.792,0.0,45.0,0.0,1

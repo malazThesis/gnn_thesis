@@ -1,0 +1,17 @@
+{
+  "dataset": "Roman-empire",
+  "model": "GATPairNorm",
+  "seed": 1,
+  "split_idx": 4,
+  "num_layers": 16,
+  "hidden_channels": 64,
+  "epochs": 200,
+  "learning_rate": 0.005,
+  "weight_decay": 0.0,
+  "final_train_acc": 0.13114464742741153,
+  "final_val_acc": 0.12586054721977052,
+  "final_test_acc": 0.1260148252735616,
+  "best_epoch": 121,
+  "best_val_acc": 0.12815533980582525,
+  "best_test_acc_at_best_val": 0.12619131662548536
+}

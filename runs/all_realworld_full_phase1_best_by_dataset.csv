@@ -1,0 +1,6 @@
+dataset,model,num_layers,hidden_channels,mean_best_test_acc,std_best_test_acc,mean_best_val_acc,std_best_val_acc,mean_final_test_acc,std_final_test_acc,mean_best_epoch,std_best_epoch,num_seeds,num_splits
+Cora,GAT,2,64,0.81,0.0,0.798,0.0,0.808,0.0,159.0,0.0,1.0,
+CiteSeer,GraphSAGE,2,128,0.706,0.0,0.72,0.0,0.712,0.0,173.0,0.0,1.0,
+PubMed,GCN,2,64,0.785,0.0,0.794,0.0,0.792,0.0,45.0,0.0,1.0,
+Roman-empire,GraphSAGE,4,128,0.7942110836569009,0.0050969040163055,0.7969638128861429,0.0046329825652608,0.7935051182492058,0.0045295626673538,194.3,4.3982319680122,,10.0
+Amazon-Photo,GAT,2,128,0.916337625178827,0.0060277792856565,0.9296,0.0125006666488898,0.9107868383404863,0.012038947494782,150.6,49.98933219531276,,10.0

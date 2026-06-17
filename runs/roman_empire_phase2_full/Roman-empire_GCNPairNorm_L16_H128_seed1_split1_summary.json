@@ -1,0 +1,17 @@
+{
+  "dataset": "Roman-empire",
+  "model": "GCNPairNorm",
+  "seed": 1,
+  "split_idx": 1,
+  "num_layers": 16,
+  "hidden_channels": 128,
+  "epochs": 200,
+  "learning_rate": 0.01,
+  "weight_decay": 0.0005,
+  "final_train_acc": 0.16988791810078546,
+  "final_val_acc": 0.17140335392762576,
+  "final_test_acc": 0.16554888810448287,
+  "best_epoch": 152,
+  "best_val_acc": 0.20494263018534864,
+  "best_test_acc_at_best_val": 0.19166960818919873
+}

@@ -1,0 +1,17 @@
+{
+  "dataset": "Roman-empire",
+  "model": "GraphSAGEPairNorm",
+  "seed": 1,
+  "split_idx": 3,
+  "num_layers": 32,
+  "hidden_channels": 128,
+  "epochs": 200,
+  "learning_rate": 0.01,
+  "weight_decay": 0.0005,
+  "final_train_acc": 0.2713794016415144,
+  "final_val_acc": 0.2727272727272727,
+  "final_test_acc": 0.2643840451817861,
+  "best_epoch": 171,
+  "best_val_acc": 0.36398940864960283,
+  "best_test_acc_at_best_val": 0.3584539357571479
+}

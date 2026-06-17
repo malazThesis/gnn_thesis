@@ -1,0 +1,16 @@
+{
+  "dataset": "CiteSeer",
+  "model": "GCNPairNorm",
+  "seed": 1,
+  "num_layers": 32,
+  "hidden_channels": 128,
+  "epochs": 200,
+  "learning_rate": 0.01,
+  "weight_decay": 0.0005,
+  "final_train_acc": 0.2916666666666667,
+  "final_val_acc": 0.222,
+  "final_test_acc": 0.178,
+  "best_epoch": 193,
+  "best_val_acc": 0.264,
+  "best_test_acc_at_best_val": 0.224
+}

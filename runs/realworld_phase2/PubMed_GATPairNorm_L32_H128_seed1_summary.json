@@ -1,0 +1,16 @@
+{
+  "dataset": "PubMed",
+  "model": "GATPairNorm",
+  "seed": 1,
+  "num_layers": 32,
+  "hidden_channels": 128,
+  "epochs": 200,
+  "learning_rate": 0.005,
+  "weight_decay": 0.0,
+  "final_train_acc": 0.36666666666666664,
+  "final_val_acc": 0.354,
+  "final_test_acc": 0.346,
+  "best_epoch": 65,
+  "best_val_acc": 0.524,
+  "best_test_acc_at_best_val": 0.519
+}

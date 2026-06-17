@@ -1,0 +1,16 @@
+{
+  "dataset": "Cora",
+  "model": "GCN",
+  "seed": 2,
+  "num_layers": 8,
+  "hidden_channels": 128,
+  "epochs": 200,
+  "learning_rate": 0.01,
+  "weight_decay": 0.0005,
+  "final_train_acc": 1.0,
+  "final_val_acc": 0.744,
+  "final_test_acc": 0.749,
+  "best_epoch": 180,
+  "best_val_acc": 0.76,
+  "best_test_acc_at_best_val": 0.752
+}

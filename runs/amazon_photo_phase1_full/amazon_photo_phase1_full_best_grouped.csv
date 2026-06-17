@@ -1,0 +1,2 @@
+dataset,model,num_layers,hidden_channels,mean_best_test_acc,std_best_test_acc,mean_best_val_acc,std_best_val_acc,mean_final_test_acc,std_final_test_acc,mean_best_epoch,std_best_epoch,num_splits
+Amazon-Photo,GAT,2,128,0.916337625178827,0.006027779285656507,0.9296,0.012500666648889833,0.9107868383404863,0.012038947494782033,150.6,49.98933219531276,10

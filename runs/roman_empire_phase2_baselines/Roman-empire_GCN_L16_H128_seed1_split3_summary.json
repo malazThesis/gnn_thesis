@@ -1,0 +1,17 @@
+{
+  "dataset": "Roman-empire",
+  "model": "GCN",
+  "seed": 1,
+  "split_idx": 3,
+  "num_layers": 16,
+  "hidden_channels": 128,
+  "epochs": 200,
+  "learning_rate": 0.01,
+  "weight_decay": 0.0005,
+  "final_train_acc": 0.15011914217633043,
+  "final_val_acc": 0.1500441306266549,
+  "final_test_acc": 0.1500176491351924,
+  "best_epoch": 197,
+  "best_val_acc": 0.20776699029126214,
+  "best_test_acc_at_best_val": 0.20155312389692906
+}

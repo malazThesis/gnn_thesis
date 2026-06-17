@@ -1,0 +1,17 @@
+{
+  "dataset": "Amazon-Photo",
+  "model": "GraphSAGE",
+  "seed": 1,
+  "split_idx": 8,
+  "num_layers": 4,
+  "hidden_channels": 64,
+  "epochs": 200,
+  "learning_rate": 0.01,
+  "weight_decay": 0.0005,
+  "final_train_acc": 0.9875,
+  "final_val_acc": 0.876,
+  "final_test_acc": 0.8841201716738197,
+  "best_epoch": 170,
+  "best_val_acc": 0.906,
+  "best_test_acc_at_best_val": 0.8954220314735336
+}

@@ -1,0 +1,16 @@
+{
+  "dataset": "Cora",
+  "model": "GCNPairNorm",
+  "seed": 1,
+  "num_layers": 16,
+  "hidden_channels": 64,
+  "epochs": 200,
+  "learning_rate": 0.01,
+  "weight_decay": 0.0005,
+  "final_train_acc": 0.38571428571428573,
+  "final_val_acc": 0.24,
+  "final_test_acc": 0.221,
+  "best_epoch": 70,
+  "best_val_acc": 0.256,
+  "best_test_acc_at_best_val": 0.198
+}

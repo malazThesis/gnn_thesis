@@ -1,0 +1,17 @@
+{
+  "topology": "CrossedRing",
+  "model": "GCN",
+  "seed": 2,
+  "distance": 8,
+  "target_node": 8,
+  "num_layers": 8,
+  "hidden_channels": 128,
+  "epochs": 150,
+  "learning_rate": 0.01,
+  "weight_decay": 0.0005,
+  "final_train_acc": 0.125,
+  "final_test_acc": 0.125,
+  "best_epoch": 1,
+  "best_test_acc": 0.125,
+  "chance_level": 0.125
+}

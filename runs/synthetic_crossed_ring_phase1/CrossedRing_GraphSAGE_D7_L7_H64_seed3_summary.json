@@ -1,0 +1,17 @@
+{
+  "topology": "CrossedRing",
+  "model": "GraphSAGE",
+  "seed": 3,
+  "distance": 7,
+  "target_node": 7,
+  "num_layers": 7,
+  "hidden_channels": 64,
+  "epochs": 150,
+  "learning_rate": 0.01,
+  "weight_decay": 0.0005,
+  "final_train_acc": 0.125,
+  "final_test_acc": 0.125,
+  "best_epoch": 1,
+  "best_test_acc": 0.125,
+  "chance_level": 0.125
+}
