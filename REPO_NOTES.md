@@ -87,7 +87,7 @@ Topologies:
 
 - depth sweep at fixed representative distances
 
-## 6. Recommended reading order 
+## 6. Recommended plots order 
 
 For real-world results:
 1. baseline Phase 1
