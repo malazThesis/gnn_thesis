@@ -4,10 +4,6 @@
 
 This repository was developed and executed on the RWTH cluster using a Python virtual environment.
 
-### Main Python environment
-- Python: 3.10.x
-- virtual environment: `~/venvs/gnn-thesis-gpu`
-
 ### Main PyTorch / PyG stack used
 - torch: `2.11.0+cu128`
 - torch_geometric: `2.7.0`
