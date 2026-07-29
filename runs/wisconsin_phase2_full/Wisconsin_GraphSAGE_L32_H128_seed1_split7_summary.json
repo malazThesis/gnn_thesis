@@ -1,0 +1,17 @@
+{
+  "dataset": "Wisconsin",
+  "model": "GraphSAGE",
+  "seed": 1,
+  "split_idx": 7,
+  "num_layers": 32,
+  "hidden_channels": 128,
+  "epochs": 200,
+  "learning_rate": 0.01,
+  "weight_decay": 0.0005,
+  "final_train_acc": 0.475,
+  "final_val_acc": 0.55,
+  "final_test_acc": 0.6078431372549019,
+  "best_epoch": 167,
+  "best_val_acc": 0.575,
+  "best_test_acc_at_best_val": 0.5686274509803921
+}

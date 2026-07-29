@@ -1,0 +1,17 @@
+{
+  "dataset": "Cornell",
+  "model": "GraphSAGEPairNorm",
+  "seed": 1,
+  "split_idx": 0,
+  "num_layers": 8,
+  "hidden_channels": 64,
+  "epochs": 200,
+  "learning_rate": 0.01,
+  "weight_decay": 0.0005,
+  "final_train_acc": 0.8505747126436781,
+  "final_val_acc": 0.6949152542372882,
+  "final_test_acc": 0.5405405405405406,
+  "best_epoch": 185,
+  "best_val_acc": 0.711864406779661,
+  "best_test_acc_at_best_val": 0.5675675675675675
+}

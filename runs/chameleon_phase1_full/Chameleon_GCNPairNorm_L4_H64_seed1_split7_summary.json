@@ -1,0 +1,17 @@
+{
+  "dataset": "Chameleon",
+  "model": "GCNPairNorm",
+  "seed": 1,
+  "split_idx": 7,
+  "num_layers": 4,
+  "hidden_channels": 64,
+  "epochs": 200,
+  "learning_rate": 0.01,
+  "weight_decay": 0.0005,
+  "final_train_acc": 0.8223443223443223,
+  "final_val_acc": 0.24691358024691357,
+  "final_test_acc": 0.25219298245614036,
+  "best_epoch": 6,
+  "best_val_acc": 0.3662551440329218,
+  "best_test_acc_at_best_val": 0.32894736842105265
+}

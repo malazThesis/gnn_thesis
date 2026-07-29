@@ -1,0 +1,17 @@
+{
+  "dataset": "Texas",
+  "model": "GCN",
+  "seed": 1,
+  "split_idx": 2,
+  "num_layers": 8,
+  "hidden_channels": 64,
+  "epochs": 200,
+  "learning_rate": 0.01,
+  "weight_decay": 0.0005,
+  "final_train_acc": 0.7011494252873564,
+  "final_val_acc": 0.559322033898305,
+  "final_test_acc": 0.4594594594594595,
+  "best_epoch": 174,
+  "best_val_acc": 0.576271186440678,
+  "best_test_acc_at_best_val": 0.43243243243243246
+}

@@ -1,0 +1,17 @@
+{
+  "dataset": "Coauthor-CS",
+  "model": "GATPairNorm",
+  "seed": 1,
+  "split_idx": 9,
+  "num_layers": 2,
+  "hidden_channels": 128,
+  "epochs": 200,
+  "learning_rate": 0.005,
+  "weight_decay": 0.0,
+  "final_train_acc": 1.0,
+  "final_val_acc": 0.79,
+  "final_test_acc": 0.7984372326470085,
+  "best_epoch": 34,
+  "best_val_acc": 0.864,
+  "best_test_acc_at_best_val": 0.8524496663434666
+}

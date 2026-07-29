@@ -1,0 +1,17 @@
+{
+  "dataset": "Cornell",
+  "model": "GCNPairNorm",
+  "seed": 1,
+  "split_idx": 1,
+  "num_layers": 8,
+  "hidden_channels": 64,
+  "epochs": 200,
+  "learning_rate": 0.01,
+  "weight_decay": 0.0005,
+  "final_train_acc": 0.6091954022988506,
+  "final_val_acc": 0.4745762711864407,
+  "final_test_acc": 0.40540540540540543,
+  "best_epoch": 103,
+  "best_val_acc": 0.5932203389830508,
+  "best_test_acc_at_best_val": 0.40540540540540543
+}

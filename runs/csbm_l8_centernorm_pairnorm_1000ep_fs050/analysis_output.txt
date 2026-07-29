@@ -1,0 +1,65 @@
+Saved: plots/csbm_l8_centernorm_pairnorm_1000ep_fs050/test_accuracy_1000_epochs.png
+Saved: plots/csbm_l8_centernorm_pairnorm_1000ep_fs050/embedding_norm_1000_epochs.png
+Saved: plots/csbm_l8_centernorm_pairnorm_1000ep_fs050/class_margin_1000_epochs.png
+
+=== LANGZEITSTABILITÄT ===
+              model  n  final_recovered_runs  late_failure_runs  history_numerical_failure_runs  metric_numerical_failure_runs  first_test_90_mean  test_acc_epoch200_mean  test_acc_epoch1000_mean  test_acc_epoch1000_min  minimum_test_after_200_mean  minimum_test_after_200_min  accuracy_change_1000_minus_200_mean  maximum_gradient_norm_median       maximum_gradient_norm_max  embedding_norm_epoch200_median  embedding_norm_epoch1000_median  embedding_norm_epoch1000_max  embedding_norm_growth_orders_median
+GraphSAGECenterNorm 25                    25                  2                               1                             20        4.0000000000            0.9953411198             0.9996940565            0.9982352257                 0.9114117184                0.0000000000                         0.0043529367  26685286562450520.0000000000 24226231255519965184.0000000000   134799215032270848.0000000000                              inf                           inf                         0.0000003761
+  GraphSAGEPairNorm 25                    25                  3                               0                              0        7.8800000000            0.9996469998             0.9994352365            0.9929411411                 0.9453881979                0.5011764765                        -0.0002117634                  1.1294193116                    2.4911849319                    0.9721868038                     0.9750251770                  0.9816139936                        -0.0026022611
+
+=== ACCURACY UND GRADIENTEN ÜBER DIE ZEIT ===
+              model  epoch  test_acc_mean  test_acc_min  recovered_rate                  loss_mean                     loss_max  gradient_norm_median          gradient_norm_max
+GraphSAGECenterNorm      1   0.4988235033  0.4641176164    0.0000000000               0.6939964628                 0.6959128380          0.0512185963               0.0587186386
+GraphSAGECenterNorm      4   0.9509411335  0.4505882263    0.8800000000        10761441.1400000006          17598106.0000000000   10851823.3175620753        17096396.7864108719
+GraphSAGECenterNorm      8   0.7344940791  0.0000000000    0.7200000000      1386158339.2799999714       31793907712.0000000000   93920658.2461757660     30861773913.5070800781
+GraphSAGECenterNorm     32   0.9994822931  0.9941176176    1.0000000000    112355881287.6799926758     1643073634304.0000000000          0.0000000000   1230689908340.7570800781
+GraphSAGECenterNorm    100   0.9996469975  0.9982352257    1.0000000000               0.0000000000                 0.0000000000          0.0000000000               0.0000000000
+GraphSAGECenterNorm    200   0.9953411198  0.9064705372    1.0000000000 481316198059868.1875000000 12000645431164928.0000000000          0.0000000000 908566071500067.0000000000
+GraphSAGECenterNorm    400   0.9997411156  0.9982352257    1.0000000000               0.0000000000                 0.0000000000          0.0000000000               0.0000000000
+GraphSAGECenterNorm    600   0.9997646451  0.9982352257    1.0000000000               0.0000000000                 0.0000000000          0.0000000000               0.0000000000
+GraphSAGECenterNorm    800   0.9997646451  0.9982352257    1.0000000000               0.0000000000                 0.0000000000          0.0000000000               0.0000000000
+GraphSAGECenterNorm   1000   0.9996940565  0.9982352257    1.0000000000               0.0000000000                 0.0000000000          0.0000000000               0.0000000000
+  GraphSAGEPairNorm      1   0.5023999727  0.4899999797    0.0000000000               0.6953163695                 0.7036001086          0.2518632167               0.2740059479
+  GraphSAGEPairNorm      4   0.7357882094  0.4958823323    0.2000000000               1.5667471838                 2.5628423691          0.7317255550               1.1205707633
+  GraphSAGEPairNorm      8   0.8967529058  0.5005882382    0.7600000000               0.3645441564                 0.9247087836          0.1530410221               0.3770818161
+  GraphSAGEPairNorm     32   0.9997411156  0.9988234639    1.0000000000               0.0218944026                 0.1768243015          0.0308993496               0.4321406029
+  GraphSAGEPairNorm    100   0.9996234679  0.9982352257    1.0000000000               0.0160499035                 0.0993010625          0.0197210335               0.2089122402
+  GraphSAGEPairNorm    200   0.9996469998  0.9970588088    1.0000000000               0.0467933474                 0.7060882449          0.0200957734               1.3111951687
+  GraphSAGEPairNorm    400   0.9988705325  0.9835293889    1.0000000000               0.0447462991                 0.2110311091          0.0476395567               0.2099642881
+  GraphSAGEPairNorm    600   0.9996940565  0.9982352257    1.0000000000               0.0434219380                 0.3115152419          0.0509859396               0.4145472454
+  GraphSAGEPairNorm    800   0.9994822955  0.9964705706    1.0000000000               0.0401514669                 0.1977222115          0.0436747725               0.2238757409
+  GraphSAGEPairNorm   1000   0.9994352365  0.9929411411    1.0000000000               0.0651012262                 0.4281351566          0.0698739023               0.5429320925
+
+=== REPRÄSENTATIONSMETRIKEN ===
+              model  epoch  pairwise_mean  pairwise_min  class_margin_mean  class_margin_min  rank_ratio_mean          embedding_norm_median         embedding_norm_min             embedding_norm_max
+GraphSAGECenterNorm      1   0.9909198380  0.9782660007       0.0160125041      0.0082642436     0.7002196836               67718.6718750000           63266.8906250000               76427.9843750000
+GraphSAGECenterNorm      4   0.9995496917  0.9945959449       1.8159821003      0.4076051712     0.1490023138            41700744.0000000000         5132227.0000000000           363193312.0000000000
+GraphSAGECenterNorm      8   0.9977335477  0.9379846454       1.8749819968      0.1189311147     0.0477213459         11022345216.0000000000       156981984.0000000000        262700417024.0000000000
+GraphSAGECenterNorm     32   1.0002642632  0.9993723631       1.9740765200      1.9167498127     0.0146176409      37428404420608.0000000000   3666806308864.0000000000     233729653997568.0000000000
+GraphSAGECenterNorm    100   1.0001982927  0.9998116493       1.9737382324      1.9431269895     0.0130393894   19444626914017280.0000000000 155862349905920.0000000000  161749670958202880.0000000000
+GraphSAGECenterNorm    200   0.9998656678  0.9929922819       1.9567868094      1.7288680822     0.0139113274  134799215032270848.0000000000 155996685074432.0000000000 8905663753962389504.0000000000
+GraphSAGECenterNorm    400   0.9998183727  0.9971239567       1.5675900307      0.0000000000     0.0131911703  186353803430199296.0000000000 155996685074432.0000000000                            inf
+GraphSAGECenterNorm    600   0.9998150420  0.9971239567       1.3259319221      0.0000000000     0.0131197112 1866247265312571648.0000000000 155996685074432.0000000000                            inf
+GraphSAGECenterNorm    800   0.9999803019  0.9971239567       1.2495755301      0.0000000000     0.0128746882 1866247265312571648.0000000000 155996685074432.0000000000                            inf
+GraphSAGECenterNorm   1000   0.9999645042  0.9971239567       1.0912722190      0.0000000000     0.0129190348                            inf 155996685074432.0000000000                            inf
+  GraphSAGEPairNorm      1   0.9947028995  0.9869217277       0.0189697289      0.0077437758     0.6887823629                   0.9550319314               0.9249954224                   0.9695304632
+  GraphSAGEPairNorm      4   0.7425362611  0.5503029823       0.2796223724      0.0028406978     0.1348628217                   0.6002935171               0.5099582672                   0.9112577438
+  GraphSAGEPairNorm      8   0.7848411536  0.4879463911       0.8535689634      0.0066451728     0.0275279595                   0.7215589881               0.4982989728                   0.9603168964
+  GraphSAGEPairNorm     32   0.9977270222  0.9891265035       1.8590988464      1.5165695995     0.0492803557                   0.9715461731               0.9127573967                   0.9831240177
+  GraphSAGEPairNorm    100   0.9995262337  0.9935858250       1.9210744037      1.5861674100     0.0239423551                   0.9810665846               0.9566785097                   0.9869355559
+  GraphSAGEPairNorm    200   0.9991838789  0.9932067990       1.8904443293      1.6455824524     0.0297849007                   0.9721868038               0.9294485450                   0.9877942801
+  GraphSAGEPairNorm    400   0.9989337802  0.9932817817       1.8298440710      1.3798793852     0.0347581383                   0.9671003819               0.9148840904                   0.9818177223
+  GraphSAGEPairNorm    600   0.9984771752  0.9903082848       1.8358404113      1.5001583248     0.0354659352                   0.9759888053               0.9383857250                   0.9878625870
+  GraphSAGEPairNorm    800   0.9983766437  0.9903424978       1.8464255035      1.5799500644     0.0335434037                   0.9699648023               0.9304729104                   0.9865499735
+  GraphSAGEPairNorm   1000   0.9978911972  0.9735553861       1.8794879783      1.4888169467     0.0289851425                   0.9750251770               0.8797411323                   0.9816139936
+
+=== GEPAARTER VERGLEICH ===
+ n_pairs  pairnorm_only_final_recovered  centernorm_only_final_recovered  pairnorm_only_late_stable  centernorm_only_late_stable  test_acc_epoch1000_mean_difference_pairnorm_minus_center  test_acc_epoch1000_wilcoxon_pvalue  minimum_test_acc_after_200_mean_difference_pairnorm_minus_center  minimum_test_acc_after_200_wilcoxon_pvalue  accuracy_change_1000_minus_200_mean_difference_pairnorm_minus_center  accuracy_change_1000_minus_200_wilcoxon_pvalue  first_test_90_mean_difference_pairnorm_minus_center  first_test_90_wilcoxon_pvalue  maximum_gradient_norm_mean_difference_pairnorm_minus_center  maximum_gradient_norm_wilcoxon_pvalue  log10_embedding_norm_epoch1000_mean_difference_pairnorm_minus_center  log10_embedding_norm_epoch1000_wilcoxon_pvalue  final_recovery_mcnemar_pvalue
+      25                              0                                0                          1                            2                                             -0.0002588201                        0.5219482693                                                      0.0339764795                                0.0255050659                                                         -0.0045647001                                    0.2135243540                                         3.8800000000                   0.0000244018                              -1418576753543873280.0000000000                           0.0000000596                                                        -16.7770705469                                    0.0004882812                   1.0000000000
+
+Saved: runs/csbm_l8_centernorm_pairnorm_1000ep_fs050/csbm_l8_1000ep_run_level.csv
+Saved: runs/csbm_l8_centernorm_pairnorm_1000ep_fs050/csbm_l8_1000ep_history_summary.csv
+Saved: runs/csbm_l8_centernorm_pairnorm_1000ep_fs050/csbm_l8_1000ep_metric_run_level.csv
+Saved: runs/csbm_l8_centernorm_pairnorm_1000ep_fs050/csbm_l8_1000ep_metric_summary.csv
+Saved: runs/csbm_l8_centernorm_pairnorm_1000ep_fs050/csbm_l8_1000ep_model_summary.csv
+Saved: runs/csbm_l8_centernorm_pairnorm_1000ep_fs050/csbm_l8_1000ep_paired_comparison.csv

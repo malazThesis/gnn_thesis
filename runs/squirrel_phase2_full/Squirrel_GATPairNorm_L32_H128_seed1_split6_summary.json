@@ -1,0 +1,17 @@
+{
+  "dataset": "Squirrel",
+  "model": "GATPairNorm",
+  "seed": 1,
+  "split_idx": 6,
+  "num_layers": 32,
+  "hidden_channels": 128,
+  "epochs": 200,
+  "learning_rate": 0.005,
+  "weight_decay": 0.0,
+  "final_train_acc": 0.19751602564102563,
+  "final_val_acc": 0.1856971153846154,
+  "final_test_acc": 0.1729106628242075,
+  "best_epoch": 2,
+  "best_val_acc": 0.2091346153846154,
+  "best_test_acc_at_best_val": 0.21998078770413065
+}

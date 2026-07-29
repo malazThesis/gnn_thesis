@@ -1,0 +1,2 @@
+dataset,model,num_layers,hidden_channels,mean_best_test_acc,std_best_test_acc,mean_best_val_acc,std_best_val_acc,mean_final_test_acc,std_final_test_acc,mean_best_epoch,std_best_epoch,num_splits
+CiteSeer,GCN,8,64,0.6363333333333333,0.01096965511460291,0.6566666666666667,0.002309401076758497,0.6093333333333333,0.004041451884327384,112.66666666666667,82.2455672564384,3

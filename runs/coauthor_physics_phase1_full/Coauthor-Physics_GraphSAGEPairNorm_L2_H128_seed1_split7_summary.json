@@ -1,0 +1,17 @@
+{
+  "dataset": "Coauthor-Physics",
+  "model": "GraphSAGEPairNorm",
+  "seed": 1,
+  "split_idx": 7,
+  "num_layers": 2,
+  "hidden_channels": 128,
+  "epochs": 200,
+  "learning_rate": 0.01,
+  "weight_decay": 0.0005,
+  "final_train_acc": 1.0,
+  "final_val_acc": 0.794,
+  "final_test_acc": 0.7994276104210309,
+  "best_epoch": 22,
+  "best_val_acc": 0.898,
+  "best_test_acc_at_best_val": 0.884577936447054
+}

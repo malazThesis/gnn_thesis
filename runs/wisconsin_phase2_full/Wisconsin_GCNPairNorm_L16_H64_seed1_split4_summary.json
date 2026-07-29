@@ -1,0 +1,17 @@
+{
+  "dataset": "Wisconsin",
+  "model": "GCNPairNorm",
+  "seed": 1,
+  "split_idx": 4,
+  "num_layers": 16,
+  "hidden_channels": 64,
+  "epochs": 200,
+  "learning_rate": 0.01,
+  "weight_decay": 0.0005,
+  "final_train_acc": 0.5166666666666667,
+  "final_val_acc": 0.4125,
+  "final_test_acc": 0.37254901960784315,
+  "best_epoch": 2,
+  "best_val_acc": 0.5375,
+  "best_test_acc_at_best_val": 0.39215686274509803
+}

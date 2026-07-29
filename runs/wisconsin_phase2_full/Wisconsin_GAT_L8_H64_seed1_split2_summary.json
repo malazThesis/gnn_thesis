@@ -1,0 +1,17 @@
+{
+  "dataset": "Wisconsin",
+  "model": "GAT",
+  "seed": 1,
+  "split_idx": 2,
+  "num_layers": 8,
+  "hidden_channels": 64,
+  "epochs": 200,
+  "learning_rate": 0.005,
+  "weight_decay": 0.0,
+  "final_train_acc": 0.48333333333333334,
+  "final_val_acc": 0.4875,
+  "final_test_acc": 0.4117647058823529,
+  "best_epoch": 4,
+  "best_val_acc": 0.4875,
+  "best_test_acc_at_best_val": 0.43137254901960786
+}

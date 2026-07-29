@@ -1,0 +1,17 @@
+{
+  "dataset": "Amazon-Ratings",
+  "model": "GATPairNorm",
+  "seed": 1,
+  "split_idx": 8,
+  "num_layers": 4,
+  "hidden_channels": 64,
+  "epochs": 200,
+  "learning_rate": 0.005,
+  "weight_decay": 0.0,
+  "final_train_acc": 0.4439000489955904,
+  "final_val_acc": 0.4149926506614405,
+  "final_test_acc": 0.41221623387228484,
+  "best_epoch": 199,
+  "best_val_acc": 0.41515596929609666,
+  "best_test_acc_at_best_val": 0.41025641025641024
+}

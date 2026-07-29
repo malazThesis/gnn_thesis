@@ -1,0 +1,547 @@
+from __future__ import annotations
+
+import csv
+import math
+import random
+from pathlib import Path
+from typing import Any
+
+import torch
+import torch.nn.functional as F
+from torch import Tensor
+from torch.nn import Module
+from torch_geometric.nn import MessagePassing
+
+
+METRIC_COLUMNS = [
+    "dataset",
+    "model",
+    "seed",
+    "split_idx",
+    "num_layers",
+    "hidden_channels",
+    "epoch",
+    "layer_index",
+    "layer_name",
+    "num_nodes_used",
+    "mean_pairwise_cosine_distance",
+    "mean_edge_cosine_distance",
+    "dirichlet_energy",
+    "normalized_dirichlet_energy",
+    "embedding_dim",
+    "effective_rank",
+    "effective_rank_ratio",
+    "mean_embedding_norm",
+    "mean_feature_variance",
+    "gradient_norm",
+]
+
+
+def _first_tensor(value: Any) -> Tensor | None:
+    """Extract the first tensor from common module-output structures."""
+    if isinstance(value, Tensor):
+        return value
+
+    if isinstance(value, (tuple, list)):
+        for item in value:
+            tensor = _first_tensor(item)
+            if tensor is not None:
+                return tensor
+
+    if isinstance(value, dict):
+        for item in value.values():
+            tensor = _first_tensor(item)
+            if tensor is not None:
+                return tensor
+
+    return None
+
+
+def _sample_rows(
+    x: Tensor,
+    max_nodes: int,
+    generator: torch.Generator | None = None,
+) -> Tensor:
+    if x.size(0) <= max_nodes:
+        return x
+
+    indices = torch.randperm(
+        x.size(0),
+        device=x.device,
+        generator=generator,
+    )[:max_nodes]
+
+    return x[indices]
+
+
+def mean_pairwise_cosine_distance(
+    x: Tensor,
+    max_nodes: int = 2048,
+    eps: float = 1e-12,
+) -> float:
+    """
+    Mean cosine distance across sampled node pairs.
+
+    Smaller values indicate increasingly similar node representations.
+    """
+    if x.ndim != 2 or x.size(0) < 2:
+        return math.nan
+
+    sampled = _sample_rows(x, max_nodes=max_nodes)
+    sampled = F.normalize(sampled.float(), p=2, dim=-1, eps=eps)
+
+    similarity = sampled @ sampled.T
+    n = similarity.size(0)
+
+    off_diagonal_sum = similarity.sum() - similarity.diagonal().sum()
+    mean_similarity = off_diagonal_sum / (n * (n - 1))
+
+    return float((1.0 - mean_similarity).item())
+
+
+def mean_edge_cosine_distance(
+    x: Tensor,
+    edge_index: Tensor,
+    max_edges: int = 200_000,
+    eps: float = 1e-12,
+) -> float:
+    """
+    Mean cosine distance between connected nodes.
+
+    This is an edge-local MAD-style measure.
+    """
+    if x.ndim != 2 or edge_index.numel() == 0:
+        return math.nan
+
+    source = edge_index[0]
+    target = edge_index[1]
+
+    num_edges = source.numel()
+
+    if num_edges > max_edges:
+        indices = torch.randperm(
+            num_edges,
+            device=edge_index.device,
+        )[:max_edges]
+
+        source = source[indices]
+        target = target[indices]
+
+    source_x = F.normalize(
+        x[source].float(),
+        p=2,
+        dim=-1,
+        eps=eps,
+    )
+    target_x = F.normalize(
+        x[target].float(),
+        p=2,
+        dim=-1,
+        eps=eps,
+    )
+
+    cosine_similarity = (source_x * target_x).sum(dim=-1)
+    cosine_distance = 1.0 - cosine_similarity
+
+    return float(cosine_distance.mean().item())
+
+
+def dirichlet_energy(
+    x: Tensor,
+    edge_index: Tensor,
+    max_edges: int = 200_000,
+) -> float:
+    """
+    Mean squared embedding difference across graph edges.
+
+    Smaller values indicate smoother representations.
+    """
+    if x.ndim != 2 or edge_index.numel() == 0:
+        return math.nan
+
+    source = edge_index[0]
+    target = edge_index[1]
+
+    num_edges = source.numel()
+
+    if num_edges > max_edges:
+        indices = torch.randperm(
+            num_edges,
+            device=edge_index.device,
+        )[:max_edges]
+
+        source = source[indices]
+        target = target[indices]
+
+    differences = x[source].float() - x[target].float()
+    squared_distance = differences.pow(2).sum(dim=-1)
+
+    return float(squared_distance.mean().item())
+
+
+
+def normalized_dirichlet_energy(
+    x: Tensor,
+    edge_index: Tensor,
+    max_edges: int = 200_000,
+    eps: float = 1e-12,
+) -> float:
+    """
+    Dirichlet energy divided by mean squared embedding norm.
+
+    Unlike raw Dirichlet energy, this value is less sensitive
+    to a global change in embedding magnitude.
+    """
+    raw_energy = dirichlet_energy(
+        x,
+        edge_index,
+        max_edges=max_edges,
+    )
+
+    if math.isnan(raw_energy):
+        return math.nan
+
+    mean_squared_norm = (
+        x.float()
+        .pow(2)
+        .sum(dim=-1)
+        .mean()
+        .clamp_min(eps)
+    )
+
+    return float(
+        raw_energy
+        / float(mean_squared_norm.item())
+    )
+
+
+def effective_rank(
+    x: Tensor,
+    max_nodes: int = 2048,
+    eps: float = 1e-12,
+) -> float:
+    """
+    Entropy-based effective rank of the centered embedding matrix.
+
+    A decreasing effective rank indicates dimensional collapse.
+    """
+    if x.ndim != 2 or min(x.shape) < 2:
+        return math.nan
+
+    sampled = _sample_rows(x, max_nodes=max_nodes)
+    sampled = sampled.float()
+
+    # The SVD is deliberately computed on CPU to avoid retaining
+    # additional GPU memory during training.
+    sampled = sampled.detach().cpu()
+    sampled = sampled - sampled.mean(dim=0, keepdim=True)
+
+    singular_values = torch.linalg.svdvals(sampled)
+    singular_values = singular_values[
+        singular_values > eps
+    ]
+
+    if singular_values.numel() == 0:
+        return 0.0
+
+    probabilities = singular_values / singular_values.sum()
+    entropy = -(
+        probabilities
+        * torch.log(probabilities.clamp_min(eps))
+    ).sum()
+
+    return float(torch.exp(entropy).item())
+
+
+def mean_embedding_norm(x: Tensor) -> float:
+    if x.ndim != 2 or x.numel() == 0:
+        return math.nan
+
+    return float(
+        x.float().norm(p=2, dim=-1).mean().item()
+    )
+
+
+def mean_feature_variance(x: Tensor) -> float:
+    if x.ndim != 2 or x.size(0) < 2:
+        return math.nan
+
+    return float(
+        x.float().var(dim=0, unbiased=False).mean().item()
+    )
+
+
+def model_gradient_norm(model: Module) -> float:
+    squared_norm = 0.0
+    found_gradient = False
+
+    for parameter in model.parameters():
+        if parameter.grad is None:
+            continue
+
+        found_gradient = True
+        gradient = parameter.grad.detach().float()
+        squared_norm += float(
+            gradient.pow(2).sum().item()
+        )
+
+    if not found_gradient:
+        return math.nan
+
+    return math.sqrt(squared_norm)
+
+
+class LayerEmbeddingRecorder:
+    """
+    Records outputs of all torch_geometric MessagePassing modules.
+
+    Usage:
+        recorder = LayerEmbeddingRecorder(model)
+        recorder.clear()
+        logits = model(...)
+        embeddings = recorder.embeddings
+        recorder.close()
+    """
+
+    def __init__(self, model: Module):
+        self.embeddings: dict[str, Tensor] = {}
+        self._call_counts: dict[str, int] = {}
+        self._handles = []
+        self.enabled = False
+        self.enabled = False
+
+        for name, module in model.named_modules():
+            is_message_passing = isinstance(
+                module,
+                MessagePassing,
+            )
+            is_pairnorm = (
+                bool(name)
+                and module.__class__.__name__ == "PairNorm"
+            )
+
+            if not (
+                is_message_passing
+                or is_pairnorm
+            ):
+                continue
+
+            handle = module.register_forward_hook(
+                self._make_hook(name)
+            )
+            self._handles.append(handle)
+
+        if not self._handles:
+            raise RuntimeError(
+                "No torch_geometric MessagePassing layers "
+                "were found in the model."
+            )
+
+    def _make_hook(self, name: str):
+        def hook(
+            module: Module,
+            inputs: tuple[Any, ...],
+            output: Any,
+        ) -> None:
+            if not self.enabled:
+                return
+
+            tensor = _first_tensor(output)
+
+            if tensor is not None and tensor.ndim == 2:
+                call_number = (
+                    self._call_counts.get(name, 0)
+                    + 1
+                )
+                self._call_counts[name] = call_number
+
+                key = (
+                    name
+                    if call_number == 1
+                    else f"{name}#{call_number}"
+                )
+
+                self.embeddings[key] = tensor.detach()
+
+        return hook
+
+    def clear(self) -> None:
+        self.embeddings.clear()
+        self._call_counts.clear()
+
+    def start(self) -> None:
+        self.clear()
+        self.enabled = True
+
+    def stop(self) -> None:
+        self.enabled = False
+
+    def close(self) -> None:
+        for handle in self._handles:
+            handle.remove()
+
+        self._handles.clear()
+        self.embeddings.clear()
+        self._call_counts.clear()
+        self.enabled = False
+        self.enabled = False
+
+
+@torch.no_grad()
+def collect_layer_metrics(
+    *,
+    embeddings: dict[str, Tensor],
+    edge_index: Tensor,
+    metadata: dict[str, Any],
+    epoch: int,
+    gradient_norm: float = math.nan,
+    max_pairwise_nodes: int = 2048,
+    max_rank_nodes: int = 2048,
+    max_edges: int = 200_000,
+) -> list[dict[str, Any]]:
+    rows = []
+
+    for layer_index, (layer_name, embedding) in enumerate(
+        embeddings.items(),
+        start=1,
+    ):
+        x = embedding.detach()
+
+        rank = effective_rank(
+            x,
+            max_nodes=max_rank_nodes,
+        )
+
+        rank_denominator = max(
+            1,
+            min(
+                int(x.size(0)),
+                int(x.size(1)),
+            ),
+        )
+
+        raw_energy = dirichlet_energy(
+            x,
+            edge_index,
+            max_edges=max_edges,
+        )
+
+        normalized_energy = (
+            normalized_dirichlet_energy(
+                x,
+                edge_index,
+                max_edges=max_edges,
+            )
+        )
+
+        row = {
+            "dataset": metadata.get("dataset"),
+            "model": metadata.get("model"),
+            "seed": metadata.get("seed"),
+            "split_idx": metadata.get("split_idx"),
+            "num_layers": metadata.get("num_layers"),
+            "hidden_channels": metadata.get(
+                "hidden_channels"
+            ),
+            "epoch": epoch,
+            "layer_index": layer_index,
+            "layer_name": layer_name,
+            "num_nodes_used": min(
+                int(x.size(0)),
+                max_pairwise_nodes,
+            ),
+            "mean_pairwise_cosine_distance":
+                mean_pairwise_cosine_distance(
+                    x,
+                    max_nodes=max_pairwise_nodes,
+                ),
+            "mean_edge_cosine_distance":
+                mean_edge_cosine_distance(
+                    x,
+                    edge_index,
+                    max_edges=max_edges,
+                ),
+            "dirichlet_energy": raw_energy,
+            "normalized_dirichlet_energy":
+                normalized_energy,
+            "embedding_dim": int(x.size(1)),
+            "effective_rank": rank,
+            "effective_rank_ratio": (
+                rank / rank_denominator
+                if not math.isnan(rank)
+                else math.nan
+            ),
+            "mean_embedding_norm":
+                mean_embedding_norm(x),
+            "mean_feature_variance":
+                mean_feature_variance(x),
+            "gradient_norm": gradient_norm,
+        }
+
+        rows.append(row)
+
+    return rows
+
+
+def append_metrics_csv(
+    path: str | Path,
+    rows: list[dict[str, Any]],
+) -> None:
+    if not rows:
+        return
+
+    output_path = Path(path)
+    output_path.parent.mkdir(
+        parents=True,
+        exist_ok=True,
+    )
+
+    file_exists = output_path.exists()
+
+    with output_path.open(
+        "a",
+        newline="",
+        encoding="utf-8",
+    ) as handle:
+        writer = csv.DictWriter(
+            handle,
+            fieldnames=METRIC_COLUMNS,
+            extrasaction="ignore",
+        )
+
+        if not file_exists:
+            writer.writeheader()
+
+        writer.writerows(rows)
+
+
+def default_metric_epochs(total_epochs: int) -> set[int]:
+    """
+    Log densely at the start and sparsely later.
+    """
+    candidates = {
+        1,
+        2,
+        4,
+        8,
+        16,
+        32,
+        50,
+        75,
+        100,
+        125,
+        150,
+        175,
+        total_epochs,
+    }
+
+    return {
+        epoch
+        for epoch in candidates
+        if 1 <= epoch <= total_epochs
+    }
+
+
+def seed_metric_sampling(seed: int) -> None:
+    random.seed(seed)
+    torch.manual_seed(seed)

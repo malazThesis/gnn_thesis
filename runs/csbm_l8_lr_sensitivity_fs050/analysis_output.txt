@@ -1,0 +1,81 @@
+
+=== Recovery by learning rate ===
+ learning_rate  n  recovered_runs  collapsed_runs  partial_runs  recovery_rate  recovery_ci95_lower  recovery_ci95_upper  final_test_acc_mean  final_test_acc_std  test_at_best_val_mean  first_test_90_mean  first_test_90_median
+    0.00100000 25              25               0             0     1.00000000           0.86680775           1.00000000           0.99981170          0.00028006             0.99724702         32.56000000           33.00000000
+    0.00300000 25              25               0             0     1.00000000           0.86680775           1.00000000           0.99978817          0.00037512             0.99734113         19.88000000           18.00000000
+    0.01000000 25               4              21             0     0.16000000           0.06403451           0.34653622           0.57976467          0.18653389             0.57957644         53.25000000           53.00000000
+    0.03000000 25               2              23             0     0.08000000           0.02222040           0.24966109           0.53992938          0.13819964             0.53999997        116.00000000          116.00000000
+
+=== Recovery matrix ===
+learning_rate                   0.001  0.003  0.010  0.030
+graph_seed initialization_seed                            
+1          11                    True   True  False  False
+           29                    True   True  False  False
+           47                    True   True  False  False
+           65                    True   True   True  False
+           83                    True   True  False  False
+2          11                    True   True  False  False
+           29                    True   True  False  False
+           47                    True   True  False  False
+           65                    True   True  False  False
+           83                    True   True  False  False
+3          11                    True   True   True  False
+           29                    True   True  False   True
+           47                    True   True  False  False
+           65                    True   True  False  False
+           83                    True   True  False  False
+4          11                    True   True  False  False
+           29                    True   True  False  False
+           47                    True   True  False  False
+           65                    True   True  False  False
+           83                    True   True   True  False
+5          11                    True   True   True   True
+           29                    True   True  False  False
+           47                    True   True  False  False
+           65                    True   True  False  False
+           83                    True   True  False  False
+
+=== Pairwise comparisons against lr=0.01 ===
+ reference_lr    target_lr  n  mean_accuracy_difference  accuracy_difference_std  positive_combinations  negative_combinations  ties  wilcoxon_pvalue  target_recovers_reference_not  reference_recovers_target_not  mcnemar_exact_pvalue  wilcoxon_holm_pvalue  mcnemar_holm_pvalue
+ 0.0100000000 0.0010000000 25              0.4200470316             0.1865157218                     23                      0     2     0.0000151120                             21                              0          0.0000009537          0.0000302441         0.0000028610
+ 0.0100000000 0.0030000000 25              0.4200235021             0.1866359274                     23                      1     1     0.0000100814                             21                              0          0.0000009537          0.0000302441         0.0000028610
+ 0.0100000000 0.0300000000 25             -0.0398352933             0.1998512522                      2                      3    20     0.4922069927                              1                              3          0.6250000000          0.4922069927         0.6250000000
+
+=== Global repeated-measures tests ===
+                   test     statistic  degrees_of_freedom       pvalue
+Friedman final accuracy 59.7548076923                   3 0.0000000000
+     Cochran Q recovery 63.3913043478                   3 0.0000000000
+
+=== Temporal representation metrics ===
+ learning_rate  epoch  pairwise_distance_mean  class_margin_mean  fisher_ratio_mean  rank_ratio_mean
+  0.0010000000      0            0.0011988282       0.0000466772       0.0212968340     0.4811922002
+  0.0010000000      1            0.0010829759       0.0000427636       0.0210136172     0.4763679779
+  0.0010000000      4            0.0007858276       0.0000340386       0.0225440252     0.4598808932
+  0.0010000000      8            0.0005351686       0.0000351374       0.0336772655     0.4396070361
+  0.0010000000     32            0.0225038314       0.0417061863       4.9537663454     0.2149288782
+  0.0010000000    200            0.6831912661       1.3486578816      26.2109038544     0.0112903582
+  0.0030000000      0            0.0011988282       0.0000466772       0.0212968340     0.4811922002
+  0.0030000000      1            0.0007221007       0.0000287093       0.0204288443     0.4540386474
+  0.0030000000      4            0.0001812768       0.0000128139       0.0311561640     0.3783659554
+  0.0030000000      8            0.0000857377       0.0000208625       0.1065905539     0.3110965800
+  0.0030000000     32            0.4985726357       0.9804923694      24.5078039026     0.0187928132
+  0.0030000000    200            0.7127779627       1.4113587567      20.2840263748     0.0116240014
+  0.0100000000      0            0.0011988282       0.0000466772       0.0212968340     0.4811922002
+  0.0100000000      1            0.0000405931       0.0000013688       0.0112149426     0.3306433058
+  0.0100000000      4            0.0000035524       0.0000001220       0.0174234170     0.1773965910
+  0.0100000000      8            0.0000013828       0.0000000072       0.0052341803     0.0644032107
+  0.0100000000     32            0.0049177670       0.0089745487       0.5646484135     0.0258878287
+  0.0100000000    200            0.1015950513       0.1990245823       3.0335670626     0.0203838328
+  0.0300000000      0            0.0011988282       0.0000466772       0.0212968340     0.4811922002
+  0.0300000000      1            0.0000006890       0.0000000004       0.0001359282     0.0289897325
+  0.0300000000      4            0.0000280118      -0.0000000299       0.3022239496     0.0382162282
+  0.0300000000      8            0.0000148034      -0.0000000114       0.2133983339     0.0167881086
+  0.0300000000     32            0.0000249791      -0.0000000188       0.0402224323     0.0140636435
+  0.0300000000    200            0.0312041688       0.0605733383       1.6472262898     0.0186621150
+
+Saved: runs/csbm_l8_lr_sensitivity_fs050/csbm_l8_lr_run_level.csv
+Saved: runs/csbm_l8_lr_sensitivity_fs050/csbm_l8_lr_summary.csv
+Saved: runs/csbm_l8_lr_sensitivity_fs050/csbm_l8_lr_pairwise_tests.csv
+Saved: runs/csbm_l8_lr_sensitivity_fs050/csbm_l8_lr_metric_run_level.csv
+Saved: runs/csbm_l8_lr_sensitivity_fs050/csbm_l8_lr_metric_summary.csv
+Saved: runs/csbm_l8_lr_sensitivity_fs050/csbm_l8_lr_global_tests.csv

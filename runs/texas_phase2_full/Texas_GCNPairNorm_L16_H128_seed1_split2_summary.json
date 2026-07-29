@@ -1,0 +1,17 @@
+{
+  "dataset": "Texas",
+  "model": "GCNPairNorm",
+  "seed": 1,
+  "split_idx": 2,
+  "num_layers": 16,
+  "hidden_channels": 128,
+  "epochs": 200,
+  "learning_rate": 0.01,
+  "weight_decay": 0.0005,
+  "final_train_acc": 0.6206896551724138,
+  "final_val_acc": 0.576271186440678,
+  "final_test_acc": 0.4864864864864865,
+  "best_epoch": 159,
+  "best_val_acc": 0.5932203389830508,
+  "best_test_acc_at_best_val": 0.4864864864864865
+}

@@ -1,0 +1,17 @@
+{
+  "dataset": "Coauthor-Physics",
+  "model": "GAT",
+  "seed": 1,
+  "split_idx": 7,
+  "num_layers": 32,
+  "hidden_channels": 128,
+  "epochs": 200,
+  "learning_rate": 0.005,
+  "weight_decay": 0.0,
+  "final_train_acc": 0.29,
+  "final_val_acc": 0.212,
+  "final_test_acc": 0.183872776089458,
+  "best_epoch": 55,
+  "best_val_acc": 0.664,
+  "best_test_acc_at_best_val": 0.6659782255923052
+}

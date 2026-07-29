@@ -1,0 +1,17 @@
+{
+  "dataset": "Coauthor-CS",
+  "model": "GCN",
+  "seed": 1,
+  "split_idx": 4,
+  "num_layers": 16,
+  "hidden_channels": 128,
+  "epochs": 200,
+  "learning_rate": 0.01,
+  "weight_decay": 0.0005,
+  "final_train_acc": 0.09666666666666666,
+  "final_val_acc": 0.114,
+  "final_test_acc": 0.10391832544344949,
+  "best_epoch": 130,
+  "best_val_acc": 0.158,
+  "best_test_acc_at_best_val": 0.1375121200022814
+}

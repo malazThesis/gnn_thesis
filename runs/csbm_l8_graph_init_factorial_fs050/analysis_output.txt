@@ -1,0 +1,71 @@
+
+=== GraphSAGE final test accuracy ===
+initialization_seed     11     29     47     65     83
+graph_seed                                            
+1                   0.5000 0.5000 0.5000 0.9982 0.5000
+2                   0.5000 0.5000 0.5000 0.5000 0.5000
+3                   1.0000 0.5000 0.5000 0.5000 0.5000
+4                   0.5000 0.5000 0.5000 0.5000 1.0000
+5                   0.9959 0.5000 0.5000 0.5000 0.5000
+
+=== PairNorm final test accuracy ===
+initialization_seed     11     29     47     65     83
+graph_seed                                            
+1                   0.9876 0.9982 0.9988 0.9965 0.9965
+2                   0.9994 1.0000 0.9947 0.9988 0.9841
+3                   0.9888 0.9829 0.9941 0.9912 0.9982
+4                   0.9994 0.9935 1.0000 1.0000 0.9876
+5                   0.9947 0.9982 0.9988 0.9971 0.9953
+
+=== GraphSAGE recovery matrix ===
+initialization_seed     11     29     47     65     83
+graph_seed                                            
+1                    False  False  False   True  False
+2                    False  False  False  False  False
+3                     True  False  False  False  False
+4                    False  False  False  False   True
+5                     True  False  False  False  False
+
+=== Effects by graph ===
+            model  graph_seed  n  collapsed_runs  recovered_runs  collapse_rate  recovery_rate  final_test_acc_mean  final_test_acc_std  test_at_best_val_mean  first_test_90_mean
+        GraphSAGE           1  5               4               1       0.800000       0.200000             0.599647            0.222818               0.599765           50.000000
+        GraphSAGE           2  5               5               0       1.000000       0.000000             0.500000            0.000000               0.500000                 NaN
+        GraphSAGE           3  5               4               1       0.800000       0.200000             0.600000            0.223607               0.598588           31.000000
+        GraphSAGE           4  5               4               1       0.800000       0.200000             0.600000            0.223607               0.599529           56.000000
+        GraphSAGE           5  5               4               1       0.800000       0.200000             0.599176            0.221765               0.600000           76.000000
+GraphSAGEPairNorm           1  5               0               5       0.000000       1.000000             0.995529            0.004530               0.996941            3.000000
+GraphSAGEPairNorm           2  5               0               5       0.000000       1.000000             0.995412            0.006647               0.998941            2.600000
+GraphSAGEPairNorm           3  5               0               5       0.000000       1.000000             0.991059            0.005739               0.997294            2.600000
+GraphSAGEPairNorm           4  5               0               5       0.000000       1.000000             0.996118            0.005465               0.996588            3.000000
+GraphSAGEPairNorm           5  5               0               5       0.000000       1.000000             0.996823            0.001794               0.998941            3.000000
+
+=== Effects by initialization ===
+            model  initialization_seed  n  collapsed_runs  recovered_runs  collapse_rate  recovery_rate  final_test_acc_mean  final_test_acc_std  test_at_best_val_mean  first_test_90_mean
+        GraphSAGE                   11  5               3               2       0.600000       0.400000             0.699176            0.272737               0.698588           53.500000
+        GraphSAGE                   29  5               5               0       1.000000       0.000000             0.500000            0.000000               0.500000                 NaN
+        GraphSAGE                   47  5               5               0       1.000000       0.000000             0.500000            0.000000               0.500000                 NaN
+        GraphSAGE                   65  5               4               1       0.800000       0.200000             0.599647            0.222818               0.599765           50.000000
+        GraphSAGE                   83  5               4               1       0.800000       0.200000             0.600000            0.223607               0.599529           56.000000
+GraphSAGEPairNorm                   11  5               0               5       0.000000       1.000000             0.994000            0.005618               0.996000            3.000000
+GraphSAGEPairNorm                   29  5               0               5       0.000000       1.000000             0.994588            0.006940               0.998706            3.000000
+GraphSAGEPairNorm                   47  5               0               5       0.000000       1.000000             0.997294            0.002683               0.996000            2.800000
+GraphSAGEPairNorm                   65  5               0               5       0.000000       1.000000             0.996706            0.003394               0.999529            2.200000
+GraphSAGEPairNorm                   83  5               0               5       0.000000       1.000000             0.992353            0.006127               0.998471            3.200000
+
+=== Paired PairNorm effect ===
+Mean final-test difference: 0.41522352
+Positive combinations: 21 / 25
+Paired t-test p: 6.821018746e-11
+Wilcoxon p: 4.030576724e-05
+
+=== Additive variance decomposition ===
+              metric  grand_mean   ss_graph  ss_initialization  ss_residual_interaction  variance_fraction_graph  variance_fraction_initialization  variance_fraction_interaction    f_graph    p_graph  f_initialization  p_initialization
+      final_test_acc  0.57976467 0.03976733         0.13894380               0.65636630               0.04762113                        0.16638433                     0.78599454 0.24234841 0.91010440        0.84674547        0.51601301
+test_acc_at_best_val  0.57957644 0.03958333         0.13817156               0.65340321               0.04762431                        0.16623981                     0.78613588 0.24232102 0.91012098        0.84585788        0.51650897
+   recovered_numeric  0.16000000 0.16000000         0.56000000               2.64000000               0.04761905                        0.16666667                     0.78571429 0.24242424 0.91005847        0.84848485        0.51504222
+
+Saved: runs/csbm_l8_graph_init_factorial_fs050/csbm_l8_graph_init_run_level.csv
+Saved: runs/csbm_l8_graph_init_factorial_fs050/csbm_l8_graph_effects.csv
+Saved: runs/csbm_l8_graph_init_factorial_fs050/csbm_l8_initialization_effects.csv
+Saved: runs/csbm_l8_graph_init_factorial_fs050/csbm_l8_pairnorm_paired_effects.csv
+Saved: runs/csbm_l8_graph_init_factorial_fs050/csbm_l8_graph_init_variance_decomposition.csv

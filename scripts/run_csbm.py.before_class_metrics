@@ -1,0 +1,663 @@
+from __future__ import annotations
+
+import argparse
+import json
+import random
+import re
+import sys
+from pathlib import Path
+
+import numpy as np
+import pandas as pd
+import torch
+import torch.nn.functional as F
+from torch import Tensor, nn
+from torch_geometric.nn import (
+    GCNConv,
+    PairNorm,
+    SAGEConv,
+)
+
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+
+from analysis_metrics.oversmoothing import (  # noqa: E402
+    LayerEmbeddingRecorder,
+    collect_layer_metrics,
+    model_gradient_norm,
+)
+
+
+MODEL_NAMES = {
+    "GCN",
+    "GCNPairNorm",
+    "GraphSAGE",
+    "GraphSAGEPairNorm",
+}
+
+
+def set_seed(seed: int) -> None:
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(seed)
+
+    torch.use_deterministic_algorithms(
+        True,
+        warn_only=True,
+    )
+
+
+def parse_epochs(value: str) -> set[int]:
+    epochs = {
+        int(item.strip())
+        for item in value.split(",")
+        if item.strip()
+    }
+
+    if any(epoch < 0 for epoch in epochs):
+        raise ValueError(
+            "Oversmoothing epochs must be non-negative."
+        )
+
+    return epochs
+
+
+def safe_name(value: object) -> str:
+    return re.sub(
+        r"[^A-Za-z0-9._-]+",
+        "-",
+        str(value),
+    ).strip("-")
+
+
+def load_graph(path: Path):
+    try:
+        return torch.load(
+            path,
+            weights_only=False,
+        )
+    except TypeError:
+        return torch.load(path)
+
+
+def select_mask(
+    mask: Tensor,
+    split_idx: int,
+) -> Tensor:
+    if mask.ndim == 1:
+        if split_idx != 0:
+            raise ValueError(
+                "One-dimensional mask only supports "
+                "split_idx=0."
+            )
+        return mask
+
+    if split_idx >= mask.size(1):
+        raise IndexError(
+            f"split_idx={split_idx}, "
+            f"available splits={mask.size(1)}"
+        )
+
+    return mask[:, split_idx]
+
+
+class NodeClassifier(nn.Module):
+    def __init__(
+        self,
+        *,
+        model_name: str,
+        in_channels: int,
+        hidden_channels: int,
+        out_channels: int,
+        num_layers: int,
+        dropout: float,
+    ):
+        super().__init__()
+
+        if model_name not in MODEL_NAMES:
+            raise ValueError(
+                f"Unknown model: {model_name}"
+            )
+
+        if num_layers < 2:
+            raise ValueError(
+                "num_layers must be at least 2."
+            )
+
+        self.model_name = model_name
+        self.dropout = dropout
+        self.use_pairnorm = model_name.endswith(
+            "PairNorm"
+        )
+
+        if model_name.startswith("GCN"):
+            convolution = GCNConv
+        else:
+            convolution = SAGEConv
+
+        channels = (
+            [in_channels]
+            + [hidden_channels] * (num_layers - 1)
+            + [out_channels]
+        )
+
+        self.convs = nn.ModuleList(
+            convolution(
+                channels[index],
+                channels[index + 1],
+            )
+            for index in range(num_layers)
+        )
+
+        self.pns = nn.ModuleList()
+
+        if self.use_pairnorm:
+            self.pns.extend(
+                PairNorm(
+                    scale=1.0,
+                    scale_individually=False,
+                )
+                for _ in range(num_layers - 1)
+            )
+
+    def forward(
+        self,
+        x: Tensor,
+        edge_index: Tensor,
+    ) -> Tensor:
+        final_index = len(self.convs) - 1
+
+        for index, conv in enumerate(self.convs):
+            x = conv(x, edge_index)
+
+            if index == final_index:
+                continue
+
+            if self.use_pairnorm:
+                x = self.pns[index](x)
+
+            x = F.relu(x)
+            x = F.dropout(
+                x,
+                p=self.dropout,
+                training=self.training,
+            )
+
+        return x
+
+
+@torch.no_grad()
+def accuracy(
+    logits: Tensor,
+    y: Tensor,
+    mask: Tensor,
+) -> float:
+    count = int(mask.sum())
+
+    if count == 0:
+        return float("nan")
+
+    prediction = logits.argmax(dim=-1)
+
+    return float(
+        (
+            prediction[mask] == y[mask]
+        )
+        .float()
+        .mean()
+        .item()
+    )
+
+
+def read_grid_row(
+    grid_path: Path,
+    task_id: int,
+) -> dict:
+    grid = pd.read_csv(grid_path)
+
+    if task_id < 0 or task_id >= len(grid):
+        raise IndexError(
+            f"task_id={task_id}, grid rows={len(grid)}"
+        )
+
+    return grid.iloc[task_id].to_dict()
+
+
+def resolve_device(value: str) -> torch.device:
+    if value == "auto":
+        return torch.device(
+            "cuda"
+            if torch.cuda.is_available()
+            else "cpu"
+        )
+
+    device = torch.device(value)
+
+    if (
+        device.type == "cuda"
+        and not torch.cuda.is_available()
+    ):
+        raise RuntimeError(
+            "CUDA requested but not available."
+        )
+
+    return device
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument(
+        "--grid",
+        type=Path,
+        required=True,
+    )
+    parser.add_argument(
+        "--task-id",
+        type=int,
+        required=True,
+    )
+    parser.add_argument(
+        "--out-dir",
+        type=Path,
+        required=True,
+    )
+    parser.add_argument(
+        "--epochs",
+        type=int,
+        default=200,
+    )
+    parser.add_argument(
+        "--device",
+        type=str,
+        default="auto",
+    )
+
+    parser.add_argument(
+        "--track-oversmoothing",
+        action="store_true",
+    )
+    parser.add_argument(
+        "--oversmoothing-epochs",
+        type=str,
+        default="1,2,4,8,16,32,50,100,150,200",
+    )
+    parser.add_argument(
+        "--oversmoothing-max-nodes",
+        type=int,
+        default=1024,
+    )
+    parser.add_argument(
+        "--oversmoothing-max-edges",
+        type=int,
+        default=100000,
+    )
+
+    args = parser.parse_args()
+
+    row = read_grid_row(
+        args.grid,
+        args.task_id,
+    )
+
+    data_path = Path(str(row["data_path"]))
+    dataset_name = str(row["dataset"])
+    model_name = str(row["model"])
+    num_layers = int(row["num_layers"])
+    hidden_channels = int(
+        row["hidden_channels"]
+    )
+    seed = int(row["seed"])
+    split_idx = int(row["split_idx"])
+    learning_rate = float(row["lr"])
+    weight_decay = float(row["weight_decay"])
+    dropout = float(row["dropout"])
+
+    if model_name not in MODEL_NAMES:
+        raise ValueError(model_name)
+
+    set_seed(seed)
+
+    device = resolve_device(args.device)
+    data = load_graph(data_path)
+
+    train_mask = select_mask(
+        data.train_mask,
+        split_idx,
+    )
+    val_mask = select_mask(
+        data.val_mask,
+        split_idx,
+    )
+    test_mask = select_mask(
+        data.test_mask,
+        split_idx,
+    )
+
+    data = data.to(device)
+    train_mask = train_mask.to(device)
+    val_mask = val_mask.to(device)
+    test_mask = test_mask.to(device)
+
+    num_classes = int(
+        getattr(
+            data,
+            "num_classes",
+            int(data.y.max().item()) + 1,
+        )
+    )
+
+    model = NodeClassifier(
+        model_name=model_name,
+        in_channels=data.num_features,
+        hidden_channels=hidden_channels,
+        out_channels=num_classes,
+        num_layers=num_layers,
+        dropout=dropout,
+    ).to(device)
+
+    optimizer = torch.optim.Adam(
+        model.parameters(),
+        lr=learning_rate,
+        weight_decay=weight_decay,
+    )
+
+    args.out_dir.mkdir(
+        parents=True,
+        exist_ok=True,
+    )
+
+    stem = "_".join(
+        [
+            safe_name(dataset_name),
+            safe_name(model_name),
+            f"L{num_layers}",
+            f"H{hidden_channels}",
+            f"seed{seed}",
+            f"split{split_idx}",
+        ]
+    )
+
+    history_path = (
+        args.out_dir / f"{stem}_history.csv"
+    )
+    summary_path = (
+        args.out_dir / f"{stem}_summary.json"
+    )
+    metrics_path = (
+        args.out_dir
+        / f"{stem}_oversmoothing.csv"
+    )
+
+    metric_epochs = parse_epochs(
+        args.oversmoothing_epochs
+    )
+
+    recorder = None
+
+    if args.track_oversmoothing:
+        recorder = LayerEmbeddingRecorder(model)
+
+    history_rows: list[dict] = []
+    metric_rows: list[dict] = []
+
+    best_val_acc = -1.0
+    best_test_acc = float("nan")
+    best_train_acc = float("nan")
+    best_epoch = -1
+
+    def record_oversmoothing(
+        epoch: int,
+        gradient_norm: float,
+    ) -> None:
+        if (
+            recorder is None
+            or epoch not in metric_epochs
+        ):
+            return
+
+        recorder.start()
+
+        model.eval()
+
+        with torch.no_grad():
+            _ = model(
+                data.x,
+                data.edge_index,
+            )
+
+        recorder.stop()
+
+        rows = collect_layer_metrics(
+            embeddings=recorder.embeddings,
+            edge_index=data.edge_index,
+            metadata={
+                "dataset": dataset_name,
+                "model": model_name,
+                "seed": seed,
+                "split_idx": split_idx,
+                "num_layers": num_layers,
+                "hidden_channels":
+                    hidden_channels,
+            },
+            epoch=epoch,
+            gradient_norm=gradient_norm,
+            max_pairwise_nodes=(
+                args.oversmoothing_max_nodes
+            ),
+            max_rank_nodes=(
+                args.oversmoothing_max_nodes
+            ),
+            max_edges=(
+                args.oversmoothing_max_edges
+            ),
+        )
+
+        metric_rows.extend(rows)
+
+    # Epoch 0: initialized model before any
+    # backward pass or optimizer update.
+    record_oversmoothing(
+        epoch=0,
+        gradient_norm=float("nan"),
+    )
+
+    for epoch in range(1, args.epochs + 1):
+        model.train()
+
+        optimizer.zero_grad(set_to_none=True)
+
+        logits = model(
+            data.x,
+            data.edge_index,
+        )
+
+        loss = F.cross_entropy(
+            logits[train_mask],
+            data.y[train_mask],
+        )
+
+        loss.backward()
+
+        gradient_norm = model_gradient_norm(
+            model
+        )
+
+        optimizer.step()
+
+        model.eval()
+
+        with torch.no_grad():
+            logits = model(
+                data.x,
+                data.edge_index,
+            )
+
+            train_acc = accuracy(
+                logits,
+                data.y,
+                train_mask,
+            )
+            val_acc = accuracy(
+                logits,
+                data.y,
+                val_mask,
+            )
+            test_acc = accuracy(
+                logits,
+                data.y,
+                test_mask,
+            )
+
+        history_rows.append(
+            {
+                "epoch": epoch,
+                "loss": float(loss.item()),
+                "train_acc": train_acc,
+                "val_acc": val_acc,
+                "test_acc": test_acc,
+                "gradient_norm": gradient_norm,
+            }
+        )
+
+        if val_acc > best_val_acc:
+            best_val_acc = val_acc
+            best_test_acc = test_acc
+            best_train_acc = train_acc
+            best_epoch = epoch
+
+        record_oversmoothing(
+            epoch=epoch,
+            gradient_norm=gradient_norm,
+        )
+
+        if (
+            epoch == 1
+            or epoch % 25 == 0
+            or epoch == args.epochs
+        ):
+            print(
+                f"epoch={epoch:03d}",
+                f"loss={loss.item():.6f}",
+                f"train={train_acc:.4f}",
+                f"val={val_acc:.4f}",
+                f"test={test_acc:.4f}",
+                flush=True,
+            )
+
+    if recorder is not None:
+        recorder.close()
+
+    pd.DataFrame(history_rows).to_csv(
+        history_path,
+        index=False,
+    )
+
+    if metric_rows:
+        pd.DataFrame(metric_rows).to_csv(
+            metrics_path,
+            index=False,
+        )
+
+    summary = {
+        "dataset": dataset_name,
+        "data_path": str(data_path),
+        "model": model_name,
+        "num_layers": num_layers,
+        "hidden_channels": hidden_channels,
+        "seed": seed,
+        "split_idx": split_idx,
+        "epochs": args.epochs,
+        "learning_rate": learning_rate,
+        "weight_decay": weight_decay,
+        "dropout": dropout,
+        "device": str(device),
+        "num_nodes": int(data.num_nodes),
+        "num_edges": int(data.num_edges),
+        "num_features": int(data.num_features),
+        "num_classes": num_classes,
+        "graph_seed": int(
+            getattr(data, "graph_seed", -1)
+        ),
+        "target_homophily": float(
+            getattr(
+                data,
+                "target_homophily",
+                float("nan"),
+            )
+        ),
+        "realized_homophily": float(
+            getattr(
+                data,
+                "realized_homophily",
+                float("nan"),
+            )
+        ),
+        "target_average_degree": float(
+            getattr(
+                data,
+                "target_average_degree",
+                float("nan"),
+            )
+        ),
+        "realized_average_degree": float(
+            getattr(
+                data,
+                "realized_average_degree",
+                float("nan"),
+            )
+        ),
+        "feature_signal": float(
+            getattr(
+                data,
+                "feature_signal",
+                float("nan"),
+            )
+        ),
+        "best_epoch": best_epoch,
+        "best_train_acc": best_train_acc,
+        "best_val_acc": best_val_acc,
+        "best_test_acc_at_best_val":
+            best_test_acc,
+        "history_file": str(history_path),
+        "oversmoothing_file": (
+            str(metrics_path)
+            if metric_rows
+            else None
+        ),
+    }
+
+    with summary_path.open(
+        "w",
+        encoding="utf-8",
+    ) as handle:
+        json.dump(
+            summary,
+            handle,
+            indent=2,
+            allow_nan=True,
+        )
+
+    print("Saved:", history_path)
+    print("Saved:", summary_path)
+
+    if metric_rows:
+        print("Saved:", metrics_path)
+        print("Metric rows:", len(metric_rows))
+
+    print(
+        "Best:",
+        f"epoch={best_epoch}",
+        f"val={best_val_acc:.4f}",
+        f"test={best_test_acc:.4f}",
+    )
+
+
+if __name__ == "__main__":
+    main()

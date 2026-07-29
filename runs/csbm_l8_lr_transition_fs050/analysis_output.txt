@@ -1,0 +1,70 @@
+Saved: plots/csbm_l8_lr_phase/recovery_rate_by_lr.png
+Saved: plots/csbm_l8_lr_phase/epoch1_retention_by_lr.png
+Saved: plots/csbm_l8_lr_phase/recovery_speed_by_lr.png
+
+=== Learning-rate phase curve ===
+ learning_rate  n  recovered_runs  collapsed_runs  partial_runs  recovery_rate  recovery_ci95_lower  recovery_ci95_upper  final_test_acc_mean  final_test_acc_std  test_at_best_val_mean  first_test_90_mean  first_test_90_median  epoch1_pairwise_mean  epoch1_retention_mean  epoch1_retention_median
+  0.0010000000 25              25               0             0   1.0000000000         0.8668077491         1.0000000000         0.9998117042        0.0002800574           0.9972470188       32.5600000000         33.0000000000          0.0010829759           0.9145375401             0.9267000918
+  0.0030000000 25              25               0             0   1.0000000000         0.8668077491         1.0000000000         0.9997881746        0.0003751220           0.9973411298       19.8800000000         18.0000000000          0.0007221007           0.6287191253             0.5984718685
+  0.0050000000 25              25               0             0   1.0000000000         0.8668077491         1.0000000000         0.9997881746        0.0002881767           0.9987999487       18.4800000000         17.0000000000          0.0003781462           0.3358781800             0.3182635974
+  0.0070000000 25              16               9             0   0.6400000000         0.4451849775         0.7975211923         0.8197646558        0.2447690775           0.8188234842       26.8750000000         26.0000000000          0.0001576638           0.1410491660             0.1421201773
+  0.0090000000 25               5              20             0   0.2000000000         0.0886058469         0.3913095037         0.5999058461        0.2039321849           0.5984940886       44.4000000000         41.0000000000          0.0000636530           0.0576605606             0.0556883016
+  0.0100000000 25               4              21             0   0.1600000000         0.0640345146         0.3465362161         0.5797646725        0.1865338926           0.5795764387       53.2500000000         53.0000000000          0.0000405931           0.0369275091             0.0323791876
+  0.0300000000 25               2              23             0   0.0800000000         0.0222204013         0.2496610895         0.5399293792        0.1381996438           0.5399999714      116.0000000000        116.0000000000          0.0000006890           0.0006480050             0.0005221684
+
+=== Adjacent learning-rate tests ===
+    lower_lr     upper_lr  mean_accuracy_change  positive_combinations  negative_combinations  ties  wilcoxon_pvalue  upper_only_recovered  lower_only_recovered  mcnemar_exact_pvalue  wilcoxon_holm_pvalue  mcnemar_holm_pvalue
+0.0010000000 0.0030000000         -0.0000235295                      4                      3    18     0.7252134074                     0                     0          1.0000000000          1.0000000000         1.0000000000
+0.0030000000 0.0050000000         -0.0000000000                      3                      4    18     0.7257209852                     0                     0          1.0000000000          1.0000000000         1.0000000000
+0.0050000000 0.0070000000         -0.1800235188                      1                     14    10     0.0009908383                     0                     9          0.0039062500          0.0059450297         0.0205078125
+0.0070000000 0.0090000000         -0.2198588097                      1                     13    11     0.0079213182                     1                    12          0.0034179688          0.0396065908         0.0205078125
+0.0090000000 0.0100000000         -0.0201411736                      2                      4    19     0.4580882347                     1                     2          1.0000000000          1.0000000000         1.0000000000
+0.0100000000 0.0300000000         -0.0398352933                      2                      3    20     0.4922069927                     1                     3          0.6250000000          1.0000000000         1.0000000000
+
+=== First-step retention predictors ===
+ learning_rate  recovered_n  failed_n  recovered_retention_mean  failed_retention_mean  auc_recovered_higher  direction_free_auc  mannwhitney_pvalue  holm_pvalue
+  0.0070000000           16         9              0.1500938574           0.1249697146          0.6388888889        0.6388888889        0.2696061046 1.0000000000
+  0.0090000000            5        20              0.0558979754           0.0581012069          0.4700000000        0.5300000000        0.8651347454 1.0000000000
+  0.0100000000            4        21              0.0372066745           0.0368743348          0.5476190476        0.5476190476        0.7952978836 1.0000000000
+  0.0300000000            2        23              0.0008253411           0.0006325844          0.6304347826        0.6304347826        0.5816892263 1.0000000000
+
+=== Empirical stability thresholds ===
+ graph_seed  initialization_seed  successful_lr_count           successful_learning_rates  largest_contiguous_success_lr  first_failure_lr  monotonic_success_pattern
+          1                   11                    3                   0.001,0.003,0.005                          0.005             0.007                       True
+          1                   29                    4             0.001,0.003,0.005,0.007                          0.007             0.009                       True
+          1                   47                    4             0.001,0.003,0.005,0.007                          0.007             0.009                       True
+          1                   65                    6 0.001,0.003,0.005,0.007,0.009,0.010                          0.010             0.030                       True
+          1                   83                    3                   0.001,0.003,0.005                          0.005             0.007                       True
+          2                   11                    3                   0.001,0.003,0.005                          0.005             0.007                       True
+          2                   29                    5       0.001,0.003,0.005,0.007,0.009                          0.009             0.010                       True
+          2                   47                    3                   0.001,0.003,0.005                          0.005             0.007                       True
+          2                   65                    4             0.001,0.003,0.005,0.007                          0.007             0.009                       True
+          2                   83                    4             0.001,0.003,0.005,0.007                          0.007             0.009                       True
+          3                   11                    6 0.001,0.003,0.005,0.007,0.009,0.010                          0.010             0.030                       True
+          3                   29                    5       0.001,0.003,0.005,0.007,0.030                          0.007             0.009                      False
+          3                   47                    4             0.001,0.003,0.005,0.007                          0.007             0.009                       True
+          3                   65                    4             0.001,0.003,0.005,0.007                          0.007             0.009                       True
+          3                   83                    5       0.001,0.003,0.005,0.007,0.009                          0.009             0.010                       True
+          4                   11                    4             0.001,0.003,0.005,0.007                          0.007             0.009                       True
+          4                   29                    4             0.001,0.003,0.005,0.007                          0.007             0.009                       True
+          4                   47                    4             0.001,0.003,0.005,0.007                          0.007             0.009                       True
+          4                   65                    3                   0.001,0.003,0.005                          0.005             0.007                       True
+          4                   83                    5       0.001,0.003,0.005,0.007,0.010                          0.007             0.009                      False
+          5                   11                    6 0.001,0.003,0.005,0.009,0.010,0.030                          0.005             0.007                      False
+          5                   29                    3                   0.001,0.003,0.005                          0.005             0.007                       True
+          5                   47                    3                   0.001,0.003,0.005                          0.005             0.007                       True
+          5                   65                    3                   0.001,0.003,0.005                          0.005             0.007                       True
+          5                   83                    4             0.001,0.003,0.005,0.007                          0.007             0.009                       True
+
+=== Global repeated-measures tests ===
+                   test      statistic  degrees_of_freedom       pvalue
+Friedman final accuracy 101.5856502242                   6 0.0000000000
+     Cochran Q recovery 105.7226277372                   6 0.0000000000
+
+Saved: runs/csbm_l8_lr_transition_fs050/csbm_l8_lr_phase_run_level.csv
+Saved: runs/csbm_l8_lr_transition_fs050/csbm_l8_lr_phase_summary.csv
+Saved: runs/csbm_l8_lr_transition_fs050/csbm_l8_lr_phase_metric_summary.csv
+Saved: runs/csbm_l8_lr_transition_fs050/csbm_l8_lr_phase_adjacent_tests.csv
+Saved: runs/csbm_l8_lr_transition_fs050/csbm_l8_lr_phase_thresholds.csv
+Saved: runs/csbm_l8_lr_transition_fs050/csbm_l8_lr_phase_retention_predictors.csv
+Saved: runs/csbm_l8_lr_transition_fs050/csbm_l8_lr_phase_global_tests.csv

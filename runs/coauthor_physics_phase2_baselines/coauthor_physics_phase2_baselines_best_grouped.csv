@@ -1,0 +1,2 @@
+dataset,model,num_layers,hidden_channels,mean_best_test_acc,std_best_test_acc,mean_best_val_acc,std_best_val_acc,mean_final_test_acc,std_final_test_acc,mean_best_epoch,std_best_epoch,num_splits
+Coauthor-Physics,GCN,8,64,0.9229634437789513,0.005614790635628468,0.932,0.00889444270941754,0.9011890360841471,0.01964279371928228,71.1,53.912377469783735,10

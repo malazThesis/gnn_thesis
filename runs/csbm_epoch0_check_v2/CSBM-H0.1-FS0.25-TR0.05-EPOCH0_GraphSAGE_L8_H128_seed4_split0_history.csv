@@ -1,0 +1,2 @@
+epoch,loss,train_acc,val_acc,test_acc,gradient_norm
+1,0.695372462272644,0.5,0.5,0.4999999701976776,0.10506908276377001

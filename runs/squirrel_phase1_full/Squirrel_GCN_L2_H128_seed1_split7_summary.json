@@ -1,0 +1,17 @@
+{
+  "dataset": "Squirrel",
+  "model": "GCN",
+  "seed": 1,
+  "split_idx": 7,
+  "num_layers": 2,
+  "hidden_channels": 128,
+  "epochs": 200,
+  "learning_rate": 0.01,
+  "weight_decay": 0.0005,
+  "final_train_acc": 0.8774038461538461,
+  "final_val_acc": 0.21454326923076922,
+  "final_test_acc": 0.2219020172910663,
+  "best_epoch": 31,
+  "best_val_acc": 0.26021634615384615,
+  "best_test_acc_at_best_val": 0.2756964457252642
+}

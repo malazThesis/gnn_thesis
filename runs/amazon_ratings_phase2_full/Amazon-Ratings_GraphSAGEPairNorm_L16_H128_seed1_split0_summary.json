@@ -1,0 +1,17 @@
+{
+  "dataset": "Amazon-Ratings",
+  "model": "GraphSAGEPairNorm",
+  "seed": 1,
+  "split_idx": 0,
+  "num_layers": 16,
+  "hidden_channels": 128,
+  "epochs": 200,
+  "learning_rate": 0.01,
+  "weight_decay": 0.0005,
+  "final_train_acc": 0.4818716315531602,
+  "final_val_acc": 0.42789482279928137,
+  "final_test_acc": 0.4355707986281235,
+  "best_epoch": 182,
+  "best_val_acc": 0.44226686264902826,
+  "best_test_acc_at_best_val": 0.44243018128368444
+}

@@ -1,0 +1,17 @@
+{
+  "dataset": "Chameleon",
+  "model": "GraphSAGEPairNorm",
+  "seed": 1,
+  "split_idx": 0,
+  "num_layers": 2,
+  "hidden_channels": 128,
+  "epochs": 200,
+  "learning_rate": 0.01,
+  "weight_decay": 0.0005,
+  "final_train_acc": 0.9542124542124543,
+  "final_val_acc": 0.3676268861454047,
+  "final_test_acc": 0.3201754385964912,
+  "best_epoch": 6,
+  "best_val_acc": 0.5267489711934157,
+  "best_test_acc_at_best_val": 0.46271929824561403
+}

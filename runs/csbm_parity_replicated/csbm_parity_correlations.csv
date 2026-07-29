@@ -1,0 +1,36 @@
+group,n,metric,spearman_correlation
+All paired runs,140,final_pairwise_delta,0.4818318452426586
+All paired runs,140,final_edge_delta,0.4361190002002027
+All paired runs,140,final_rank_ratio_delta,-0.15456407315013415
+All paired runs,140,best_pairwise_delta,0.39743700046048935
+All paired runs,140,best_rank_ratio_delta,-0.20591102578268294
+Homophily 0.1,70,final_pairwise_delta,0.31292273064320614
+Homophily 0.1,70,final_edge_delta,0.33657267391825935
+Homophily 0.1,70,final_rank_ratio_delta,0.010239946509642122
+Homophily 0.1,70,best_pairwise_delta,0.3202206880665591
+Homophily 0.1,70,best_rank_ratio_delta,-0.1839085270684946
+Homophily 0.5,70,final_pairwise_delta,0.545930259118686
+Homophily 0.5,70,final_edge_delta,0.6441784551338263
+Homophily 0.5,70,final_rank_ratio_delta,-0.38620256317458446
+Homophily 0.5,70,best_pairwise_delta,0.41009084026056
+Homophily 0.5,70,best_rank_ratio_delta,-0.2841917447612868
+"Homophily 0.1, GCN",35,final_pairwise_delta,0.4527891837185675
+"Homophily 0.1, GCN",35,final_edge_delta,0.49309872480326333
+"Homophily 0.1, GCN",35,final_rank_ratio_delta,0.20645309931209296
+"Homophily 0.1, GCN",35,best_pairwise_delta,0.3536149159705063
+"Homophily 0.1, GCN",35,best_rank_ratio_delta,-0.22458172890044822
+"Homophily 0.1, GraphSAGE",35,final_pairwise_delta,0.39442838359262333
+"Homophily 0.1, GraphSAGE",35,final_edge_delta,0.4047250403432518
+"Homophily 0.1, GraphSAGE",35,final_rank_ratio_delta,-0.24462863538186702
+"Homophily 0.1, GraphSAGE",35,best_pairwise_delta,0.30773717675668677
+"Homophily 0.1, GraphSAGE",35,best_rank_ratio_delta,-0.2886385392353597
+"Homophily 0.5, GCN",35,final_pairwise_delta,0.34117979755074684
+"Homophily 0.5, GCN",35,final_edge_delta,0.523749520839709
+"Homophily 0.5, GCN",35,final_rank_ratio_delta,-0.09794031970758604
+"Homophily 0.5, GCN",35,best_pairwise_delta,0.3191817572158527
+"Homophily 0.5, GCN",35,best_rank_ratio_delta,0.10046238802623633
+"Homophily 0.5, GraphSAGE",35,final_pairwise_delta,0.6766148839312347
+"Homophily 0.5, GraphSAGE",35,final_edge_delta,0.6648452317775333
+"Homophily 0.5, GraphSAGE",35,final_rank_ratio_delta,-0.5453272164548282
+"Homophily 0.5, GraphSAGE",35,best_pairwise_delta,0.5580776729546713
+"Homophily 0.5, GraphSAGE",35,best_rank_ratio_delta,-0.5535939959437375

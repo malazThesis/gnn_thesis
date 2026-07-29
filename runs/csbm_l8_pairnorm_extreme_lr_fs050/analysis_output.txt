@@ -1,0 +1,21 @@
+
+=== EXTREME PAIRNORM-LERNRATEN ===
+ learning_rate  n  final_recovered_runs  checkpoint_recovered_runs  collapsed_runs  partial_runs  numerical_failure_runs  final_recovery_rate  final_test_acc_mean  final_test_acc_min  test_at_best_val_mean  first_test_90_mean  first_test_90_median  maximum_loss_median  maximum_loss_max
+  0.2000000000 25                    25                         25               0             0                       0         1.0000000000         0.9997646475        0.9976470470           0.9987293530        3.7200000000          4.0000000000         1.0757207870      1.3286962509
+  0.3000000000 25                    25                         25               0             0                       0         1.0000000000         0.9998117042        0.9982352257           0.9986117125        4.2400000000          4.0000000000         1.4724062681      1.9197964668
+  0.5000000000 25                    25                         25               0             0                       0         1.0000000000         0.9996469998        0.9970588088           0.9970587850        7.8800000000          7.0000000000         2.6223769188      3.1219501495
+
+=== BENACHBARTE LERNRATEN ===
+    lower_lr     upper_lr  mean_accuracy_change  positive_combinations  negative_combinations  ties  upper_only_recovered  lower_only_recovered  wilcoxon_pvalue  mcnemar_exact_pvalue  wilcoxon_holm_pvalue  mcnemar_holm_pvalue
+0.1000000000 0.2000000000         -0.0000941157                      3                      6    16                     0                     0     0.2710916369          1.0000000000          0.8132749108         1.0000000000
+0.2000000000 0.3000000000          0.0000470567                      6                      4    15                     0                     0     0.6657709232          1.0000000000          0.8132749108         1.0000000000
+0.3000000000 0.5000000000         -0.0001647043                      3                      5    17                     0                     0     0.2906462741          1.0000000000          0.8132749108         1.0000000000
+
+=== STABILITÄTSGRENZE ===
+ baseline_fully_stable_lr  pairnorm_largest_fully_stable_lr  stability_factor_vs_baseline  highest_pairnorm_lr_tested  first_not_fully_stable_lr  pairnorm_boundary_above_tested_range
+             0.0050000000                      0.5000000000                100.0000000000                0.5000000000                        NaN                                  True
+
+Saved: runs/csbm_l8_pairnorm_extreme_lr_fs050/csbm_l8_pairnorm_extreme_lr_run_level.csv
+Saved: runs/csbm_l8_pairnorm_extreme_lr_fs050/csbm_l8_pairnorm_extreme_lr_summary.csv
+Saved: runs/csbm_l8_pairnorm_extreme_lr_fs050/csbm_l8_pairnorm_extreme_lr_adjacent_tests.csv
+Saved: runs/csbm_l8_pairnorm_extreme_lr_fs050/csbm_l8_pairnorm_extreme_lr_stability.csv

@@ -1,0 +1,61 @@
+
+=== L8 baseline outcome by seed ===
+ graph_seed   final_loss  final_train_acc  final_val_acc  final_test_acc   outcome  first_train_60  first_train_90  first_val_90  first_test_90
+          1 0.6932359338     0.5000000000   0.5000000000    0.4999999702 collapsed             NaN             NaN           NaN            NaN
+          2 0.6934164166     0.5000000000   0.5000000000    0.4999999702 collapsed             NaN             NaN           NaN            NaN
+          3 0.6935006976     0.5000000000   0.5000000000    0.4999999702 collapsed             NaN             NaN           NaN            NaN
+          4 0.6923722625     0.5000000000   0.5000000000    0.4999999702 collapsed             NaN             NaN           NaN            NaN
+          5 0.0000000000     1.0000000000   1.0000000000    0.9982352257 recovered   31.0000000000   32.0000000000 31.0000000000  32.0000000000
+
+=== Early representation state ===
+ graph_seed   outcome  final_test_acc  hidden_mean_pairwise_cosine_distance_epoch0  hidden_class_separation_margin_epoch0  hidden_mean_pairwise_cosine_distance_epoch1  hidden_class_separation_margin_epoch1  hidden_mean_pairwise_cosine_distance_epoch4  hidden_class_separation_margin_epoch4  hidden_mean_pairwise_cosine_distance_epoch8  hidden_class_separation_margin_epoch8  hidden_mean_pairwise_cosine_distance_epoch32  hidden_class_separation_margin_epoch32
+          1 collapsed    0.4999999702                                 0.0007737875                           0.0000226059                                 0.0000737906                           0.0000086492                                 0.0000075102                           0.0000004041                                 0.0000011325                           0.0000000019                                  0.0000011325                           -0.0000000015
+          2 collapsed    0.4999999702                                 0.0013250113                           0.0000641138                                 0.0000686646                           0.0000021135                                 0.0000064373                           0.0000005978                                 0.0000005364                           0.0000000123                                  0.0000000596                           -0.0000000056
+          3 collapsed    0.4999999702                                 0.0007205606                           0.0000237355                                 0.0000653267                           0.0000023214                                 0.0000042915                           0.0000000612                                 0.0000052452                           0.0000000013                                  0.0000000596                           -0.0000000002
+          4 collapsed    0.4999999702                                 0.0011644959                           0.0000498835                                 0.0000579953                           0.0000024364                                 0.0000051856                           0.0000001302                                 0.0000005364                           0.0000000014                                  0.0000000596                           -0.0000000001
+          5 recovered    0.9982352257                                 0.0006257892                           0.0000280270                                 0.0000575185                           0.0000024159                                 0.0000035763                           0.0000001505                                 0.0000005364                           0.0000000241                                  0.0237078071                            0.0458058663
+
+=== Recovered versus collapsed ===
+  outcome  epoch  n  pairwise_mean  class_margin_mean   fisher_mean  rank_ratio_mean
+collapsed      0  4   0.0009959638       0.0000400847  0.0202597792     0.4806854799
+collapsed      1  4   0.0000664443       0.0000038801  0.0217915685     0.3341629729
+collapsed      4  4   0.0000058562       0.0000002983  0.0242554413     0.2042969279
+collapsed      8  4   0.0000018626       0.0000000042  0.0037495634     0.0683102328
+collapsed     32  4   0.0000003278      -0.0000000018  0.0174971940     0.0235077511
+collapsed    200  4  -0.0000001639      -0.0000000000  1.0779205114     0.0194433408
+recovered      0  1   0.0006257892       0.0000280270  0.0229604337     0.4594282806
+recovered      1  1   0.0000575185       0.0000024159  0.0160600003     0.3150357008
+recovered      4  1   0.0000035763       0.0000001505  0.0214612745     0.2270927876
+recovered      8  1   0.0000005364       0.0000000241  0.0228820201     0.1201668829
+recovered     32  1   0.0237078071       0.0458058663 23.6311416626     0.0135669280
+recovered    200  1   0.5759985447       1.1159349754 10.9195165634     0.0143068153
+
+=== Descriptive early correlations ===
+                                      metric  spearman_rho       pvalue
+hidden_mean_pairwise_cosine_distance_epoch32  0.7905694150 0.1113671547
+logits_mean_pairwise_cosine_distance_epoch32  0.7905694150 0.1113671547
+      logits_class_separation_margin_epoch32  0.7071067812 0.1816901138
+       logits_class_separation_margin_epoch8  0.7071067812 0.1816901138
+      hidden_class_separation_margin_epoch32  0.7071067812 0.1816901138
+    hidden_fisher_discriminant_ratio_epoch32  0.7071067812 0.1816901138
+       hidden_class_separation_margin_epoch8  0.7071067812 0.1816901138
+          hidden_effective_rank_ratio_epoch8  0.7071067812 0.1816901138
+     logits_fisher_discriminant_ratio_epoch8  0.7071067812 0.1816901138
+    logits_fisher_discriminant_ratio_epoch32  0.7071067812 0.1816901138
+     hidden_fisher_discriminant_ratio_epoch8  0.7071067812 0.1816901138
+ logits_mean_pairwise_cosine_distance_epoch8  0.3627381251 0.5484857653
+          hidden_effective_rank_ratio_epoch4  0.3535533906 0.5594043442
+     logits_fisher_discriminant_ratio_epoch0  0.3535533906 0.5594043442
+     hidden_fisher_discriminant_ratio_epoch1  0.3535533906 0.5594043442
+       logits_class_separation_margin_epoch0  0.3535533906 0.5594043442
+          logits_effective_rank_ratio_epoch8  0.3535533906 0.5594043442
+          logits_effective_rank_ratio_epoch0  0.3535533906 0.5594043442
+     logits_fisher_discriminant_ratio_epoch4  0.3535533906 0.5594043442
+       logits_class_separation_margin_epoch4  0.3535533906 0.5594043442
+Saved: plots/csbm_l8_recovery/l8_test_accuracy_by_seed.png
+Saved: plots/csbm_l8_recovery/l8_pairwise_by_seed.png
+Saved: plots/csbm_l8_recovery/l8_class_margin_by_seed.png
+
+Saved: runs/csbm_classmetrics_temporal_fs050/csbm_l8_baseline_recovery_by_seed.csv
+Saved: runs/csbm_classmetrics_temporal_fs050/csbm_l8_baseline_early_predictors.csv
+Saved: runs/csbm_classmetrics_temporal_fs050/csbm_l8_baseline_recovery_groups.csv

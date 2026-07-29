@@ -1,0 +1,17 @@
+{
+  "dataset": "Coauthor-CS",
+  "model": "GCNPairNorm",
+  "seed": 1,
+  "split_idx": 1,
+  "num_layers": 32,
+  "hidden_channels": 128,
+  "epochs": 200,
+  "learning_rate": 0.01,
+  "weight_decay": 0.0005,
+  "final_train_acc": 0.49666666666666665,
+  "final_val_acc": 0.426,
+  "final_test_acc": 0.45263217931899846,
+  "best_epoch": 199,
+  "best_val_acc": 0.432,
+  "best_test_acc_at_best_val": 0.447327895967604
+}

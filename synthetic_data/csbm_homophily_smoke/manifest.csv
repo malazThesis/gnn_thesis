@@ -1,0 +1,4 @@
+path,dataset,graph_seed,num_nodes,num_edges,feature_dim,target_homophily,realized_homophily,target_average_degree,realized_average_degree,feature_signal,num_splits
+synthetic_data/csbm_homophily_smoke/csbm_h01_seed1.pt,CSBM-H0.1,1,2000,40234,64,0.1,0.09996520727872849,20.0,20.117,1.0,10
+synthetic_data/csbm_homophily_smoke/csbm_h05_seed1.pt,CSBM-H0.5,1,2000,40130,64,0.5,0.49922752380371094,20.0,20.065,1.0,10
+synthetic_data/csbm_homophily_smoke/csbm_h09_seed1.pt,CSBM-H0.9,1,2000,39574,64,0.9,0.8979128003120422,20.0,19.787,1.0,10

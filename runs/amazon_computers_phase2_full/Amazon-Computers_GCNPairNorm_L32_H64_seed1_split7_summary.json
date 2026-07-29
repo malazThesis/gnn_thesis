@@ -1,0 +1,17 @@
+{
+  "dataset": "Amazon-Computers",
+  "model": "GCNPairNorm",
+  "seed": 1,
+  "split_idx": 7,
+  "num_layers": 32,
+  "hidden_channels": 64,
+  "epochs": 200,
+  "learning_rate": 0.01,
+  "weight_decay": 0.0005,
+  "final_train_acc": 0.12,
+  "final_val_acc": 0.238,
+  "final_test_acc": 0.2346000612932884,
+  "best_epoch": 170,
+  "best_val_acc": 0.258,
+  "best_test_acc_at_best_val": 0.2501532332209623
+}

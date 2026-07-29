@@ -1,0 +1,25 @@
+
+=== CHECKPOINT DISTRIBUTION ===
+model              num_layers  epoch
+GraphSAGE          4           600      10
+                   8           600      10
+GraphSAGEPairNorm  4           400       2
+                               600       8
+                   8           600      10
+dtype: int64
+
+Mean checkpoint gap: 135.175
+
+=== PAIRNORM EFFECTS NEAR BEST VALIDATION EPOCH ===
+ num_layers                        metric  baseline_mean  pairnorm_mean  n_pairs  mean_difference     ci95_low    ci95_high  positive_pairs  negative_pairs  exact_sign_flip_pvalue      cohen_dz  exact_sign_flip_holm_pvalue
+          4 mean_pairwise_cosine_distance   0.4001924455   0.9924380660       10     0.5922456205 0.5774819129 0.6070093281              10               0            0.0019531250 28.6965175757                 0.0078125000
+          4     mean_edge_cosine_distance   0.1883472592   0.4680111408       10     0.2796638817 0.2606490133 0.2986787501              10               0            0.0019531250 10.5212134451                 0.0078125000
+          4   normalized_dirichlet_energy   0.5381077918   0.9065357706       10     0.3684279788 0.3292843637 0.4075715940              10               0            0.0019531250  6.7330903848                 0.0078125000
+          4          effective_rank_ratio   0.0245007463   0.1629474893       10     0.1384467430 0.1360235470 0.1408699391              10               0            0.0019531250 40.8711596487                 0.0078125000
+          8 mean_pairwise_cosine_distance   0.7559566796   0.9888364077       10     0.2328797281 0.1999481834 0.2658112728              10               0            0.0019531250  5.0587399818                 0.0078125000
+          8     mean_edge_cosine_distance   0.1834463462   0.4798931658       10     0.2964468196 0.2839687190 0.3089249202              10               0            0.0019531250 16.9949968438                 0.0078125000
+          8   normalized_dirichlet_energy   0.2717476480   1.0010102167       10     0.7292625687 0.6933805663 0.7651445711              10               0            0.0019531250 14.5388490087                 0.0078125000
+          8          effective_rank_ratio   0.0241046688   0.0888129257       10     0.0647082569 0.0619810292 0.0674354846              10               0            0.0019531250 16.9730965445                 0.0078125000
+
+Saved: runs/amazon_ratings_matched_lr_oversmoothing_800ep/amazon_ratings_oversmoothing_best_checkpoint_detail.csv
+Saved: runs/amazon_ratings_matched_lr_oversmoothing_800ep/amazon_ratings_oversmoothing_best_checkpoint_effects.csv

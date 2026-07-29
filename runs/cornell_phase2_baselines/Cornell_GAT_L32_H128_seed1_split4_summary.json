@@ -1,0 +1,17 @@
+{
+  "dataset": "Cornell",
+  "model": "GAT",
+  "seed": 1,
+  "split_idx": 4,
+  "num_layers": 32,
+  "hidden_channels": 128,
+  "epochs": 200,
+  "learning_rate": 0.005,
+  "weight_decay": 0.0,
+  "final_train_acc": 0.28735632183908044,
+  "final_val_acc": 0.1016949152542373,
+  "final_test_acc": 0.1891891891891892,
+  "best_epoch": 1,
+  "best_val_acc": 0.4576271186440678,
+  "best_test_acc_at_best_val": 0.43243243243243246
+}

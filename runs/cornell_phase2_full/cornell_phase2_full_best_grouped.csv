@@ -1,0 +1,2 @@
+dataset,model,num_layers,hidden_channels,mean_best_test_acc,std_best_test_acc,mean_best_val_acc,std_best_val_acc,mean_final_test_acc,std_final_test_acc,mean_best_epoch,std_best_epoch,num_splits
+Cornell,GraphSAGE,8,64,0.5594594594594595,0.06248122841225117,0.6050847457627119,0.08305276910801918,0.5054054054054055,0.0709941920895335,81.7,48.92863283509065,10

@@ -1,0 +1,17 @@
+{
+  "dataset": "Texas",
+  "model": "GAT",
+  "seed": 1,
+  "split_idx": 7,
+  "num_layers": 16,
+  "hidden_channels": 128,
+  "epochs": 200,
+  "learning_rate": 0.005,
+  "weight_decay": 0.0,
+  "final_train_acc": 0.47126436781609193,
+  "final_val_acc": 0.6271186440677966,
+  "final_test_acc": 0.6216216216216216,
+  "best_epoch": 11,
+  "best_val_acc": 0.6610169491525424,
+  "best_test_acc_at_best_val": 0.5675675675675675
+}

@@ -1,0 +1,36 @@
+group,n,metric,spearman_correlation
+All runs,36,final_hidden_pairwise_distance,0.32753020248977865
+All runs,36,final_hidden_edge_distance,0.2086651900085909
+All runs,36,final_hidden_normalized_dirichlet,0.2395588237558743
+All runs,36,final_hidden_effective_rank_ratio,-0.12197658841599826
+All runs,36,best_hidden_effective_rank_ratio,0.13795605414735174
+GCN,9,final_hidden_pairwise_distance,0.6904898008019084
+GCN,9,final_hidden_edge_distance,0.6266795614405122
+GCN,9,final_hidden_normalized_dirichlet,0.6266795614405122
+GCN,9,final_hidden_effective_rank_ratio,0.49612131947373883
+GCN,9,best_hidden_effective_rank_ratio,0.40908249149588993
+GCNPairNorm,9,final_hidden_pairwise_distance,0.8215838362577491
+GCNPairNorm,9,final_hidden_edge_distance,-0.07302967433402215
+GCNPairNorm,9,final_hidden_normalized_dirichlet,-0.07302967433402215
+GCNPairNorm,9,final_hidden_effective_rank_ratio,-0.5477225575051661
+GCNPairNorm,9,best_hidden_effective_rank_ratio,0.2921186973360886
+GraphSAGE,9,final_hidden_pairwise_distance,0.06810052246069989
+GraphSAGE,9,final_hidden_edge_distance,0.5022413531476617
+GraphSAGE,9,final_hidden_normalized_dirichlet,0.46819109191731173
+GraphSAGE,9,final_hidden_effective_rank_ratio,-0.2553769592276246
+GraphSAGE,9,best_hidden_effective_rank_ratio,-0.1957890020745122
+GraphSAGEPairNorm,9,final_hidden_pairwise_distance,0.28091465515038705
+GraphSAGEPairNorm,9,final_hidden_edge_distance,-0.04256282653793743
+GraphSAGEPairNorm,9,final_hidden_normalized_dirichlet,0.02553769592276246
+GraphSAGEPairNorm,9,final_hidden_effective_rank_ratio,-0.297939785765562
+GraphSAGEPairNorm,9,best_hidden_effective_rank_ratio,-0.2638895245352121
+Architecture: GCN,18,final_hidden_pairwise_distance,0.5187549492135388
+Architecture: GCN,18,final_hidden_edge_distance,0.28130688765952244
+Architecture: GCN,18,final_hidden_normalized_dirichlet,0.2956480231088314
+Architecture: GCN,18,final_hidden_effective_rank_ratio,0.07170567724654493
+Architecture: GCN,18,best_hidden_effective_rank_ratio,0.3717663574167022
+Architecture: GraphSAGE,18,final_hidden_pairwise_distance,0.15607230296301658
+Architecture: GraphSAGE,18,final_hidden_edge_distance,0.24676296549558027
+Architecture: GraphSAGE,18,final_hidden_normalized_dirichlet,0.2562538487838718
+Architecture: GraphSAGE,18,final_hidden_effective_rank_ratio,-0.27418107277286696
+Architecture: GraphSAGE,18,best_hidden_effective_rank_ratio,-0.1539632177878407

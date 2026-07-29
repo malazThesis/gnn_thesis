@@ -1,0 +1,3 @@
+model,fully_stable_learning_rates,mean_worst_lr_accuracy,mean_best_lr_accuracy,mean_accuracy_range_across_lr,minimum_accuracy_any_combination,maximum_accuracy_any_combination
+GraphSAGE,2,0.5198352646827697,0.9999293518066407,0.48009408712387086,0.4999999701976776,0.9999999403953552
+GraphSAGEPairNorm,3,0.9715764355659485,0.9990117073059082,0.02743527173995969,0.8894117474555969,0.9999999403953552

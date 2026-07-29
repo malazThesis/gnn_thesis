@@ -1,0 +1,2 @@
+baseline_fully_stable_lr,pairnorm_largest_fully_stable_lr,stability_factor_vs_baseline,highest_pairnorm_lr_tested,first_not_fully_stable_lr,pairnorm_boundary_above_tested_range
+0.005,0.5,100.0,0.5,,True

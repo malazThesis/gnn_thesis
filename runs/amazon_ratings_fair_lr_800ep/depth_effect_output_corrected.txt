@@ -1,0 +1,29 @@
+
+=== SPLIT-LEVEL DEPTH EFFECTS ===
+split_idx graphsage_depth_change pairnorm_depth_change depth_interaction
+                                                                        
+        0          -0.0065327454         -0.0122488976     -0.0057161522
+        1          -0.0195982362         -0.0083292504      0.0112689858
+        2          -0.0310305406         -0.0027764168      0.0282541238
+        3          -0.0290707170         -0.0048995590      0.0241711579
+        4          -0.0261309815         -0.0073493386      0.0187816430
+        5          -0.0320104524         -0.0148619958      0.0171484566
+        6          -0.0315204965         -0.0093091622      0.0222113343
+        7          -0.0259676629         -0.0068593827      0.0191082803
+        8          -0.0329903642         -0.0129021721      0.0200881921
+        9          -0.0385431978         -0.0062061081      0.0323370897
+
+=== STATISTICAL TESTS ===
+                comparison                                                             interpretation  n_pairs  mean_difference  mean_difference_percentage_points  std_difference  median_difference  minimum_difference  maximum_difference  positive_pairs  negative_pairs  zero_pairs      ci95_low     ci95_high  paired_t_pvalue  wilcoxon_pvalue  exact_sign_flip_pvalue      cohen_dz  paired_t_holm_pvalue  wilcoxon_holm_pvalue  exact_sign_flip_holm_pvalue  baseline_mean_depth_loss  pairnorm_mean_depth_loss  absolute_depth_loss_reduction  relative_depth_loss_reduction
+     GraphSAGE L8 minus L4                                Negative values indicate depth degradation.       10    -0.0273395394                      -2.7339539441    0.0088792216      -0.0300506288       -0.0385431978       -0.0065327454               0              10           0 -0.0336913519 -0.0209877269     0.0000044657     0.0019531250            0.0019531250 -3.0790468617          0.0000133972          0.0058593750                 0.0058593750              0.0273395394              0.0085742283                   0.0187653111                   0.6863799283
+      PairNorm L8 minus L4                                Negative values indicate depth degradation.       10    -0.0085742283                      -0.8574228319    0.0037938153      -0.0078392945       -0.0148619958       -0.0027764168               0              10           0 -0.0112881603 -0.0058602964     0.0000538438     0.0019531250            0.0019531250 -2.2600542374          0.0001076876          0.0058593750                 0.0058593750              0.0273395394              0.0085742283                   0.0187653111                   0.6863799283
+PairNorm depth interaction Positive values indicate that PairNorm reduces the L4-to-L8 depth penalty.       10     0.0187653111                       1.8765311122    0.0104101876       0.0195982362       -0.0057161522        0.0323370897               9               1           0  0.0113183115  0.0262123107     0.0002941991     0.0039062500            0.0039062500  1.8025910539          0.0002941991          0.0058593750                 0.0058593750              0.0273395394              0.0085742283                   0.0187653111                   0.6863799283
+
+Mean GraphSAGE depth loss: 2.7340 pp
+Mean PairNorm depth loss: 0.8574 pp
+Absolute reduction: 1.8765 pp
+Relative reduction: 68.64%
+
+Saved: runs/amazon_ratings_fair_lr_800ep/amazon_ratings_depth_effect_800ep_detail.csv
+Saved: runs/amazon_ratings_fair_lr_800ep/amazon_ratings_depth_effect_800ep_summary.csv
+Saved: plots/amazon_ratings_fair_lr_800ep/paired_depth_effect_800ep.png

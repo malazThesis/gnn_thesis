@@ -1,0 +1,17 @@
+{
+  "dataset": "Cornell",
+  "model": "GraphSAGE",
+  "seed": 1,
+  "split_idx": 0,
+  "num_layers": 8,
+  "hidden_channels": 128,
+  "epochs": 200,
+  "learning_rate": 0.01,
+  "weight_decay": 0.0005,
+  "final_train_acc": 0.6091954022988506,
+  "final_val_acc": 0.5932203389830508,
+  "final_test_acc": 0.4864864864864865,
+  "best_epoch": 47,
+  "best_val_acc": 0.711864406779661,
+  "best_test_acc_at_best_val": 0.5405405405405406
+}

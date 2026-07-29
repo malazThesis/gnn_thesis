@@ -1,0 +1,17 @@
+{
+  "dataset": "Amazon-Ratings",
+  "model": "GCNPairNorm",
+  "seed": 1,
+  "split_idx": 6,
+  "num_layers": 2,
+  "hidden_channels": 64,
+  "epochs": 200,
+  "learning_rate": 0.01,
+  "weight_decay": 0.0005,
+  "final_train_acc": 0.5739833414992651,
+  "final_val_acc": 0.4679078882900539,
+  "final_test_acc": 0.4692144373673036,
+  "best_epoch": 198,
+  "best_val_acc": 0.4780336436387392,
+  "best_test_acc_at_best_val": 0.4746039523109587
+}

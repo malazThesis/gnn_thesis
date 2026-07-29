@@ -1,0 +1,2 @@
+dataset,model,num_layers,hidden_channels,mean_best_test_acc,std_best_test_acc,mean_best_val_acc,std_best_val_acc,mean_final_test_acc,std_final_test_acc,mean_best_epoch,std_best_epoch,num_splits
+Squirrel,GraphSAGE,8,128,0.31988472622478387,0.01652704181948632,0.32415865384615383,0.020534953379081847,0.31085494716618634,0.015602886796378921,23.6,20.43526363911168,10

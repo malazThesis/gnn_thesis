@@ -1,0 +1,30 @@
+
+=== PERFORMANCE ===
+              Modell Tiefe  Validation (%)  Test (%)  Test-Std. (pp)  Beste Epoche
+           GraphSAGE    L4          50.926    50.518           0.509       730.300
+GraphSAGE + PairNorm    L4          52.896    51.966           0.508       714.900
+           GraphSAGE    L8          48.221    47.784           0.744       742.100
+GraphSAGE + PairNorm    L8          51.605    51.039           0.857       719.000
+
+=== DEPTH EFFECT ===
+                 Vergleich  Differenz (pp)  95-%-KI unten (pp)  95-%-KI oben (pp)  Exaktes p (Holm)  Cohen dz
+    GraphSAGE: L8 minus L4         -2.7340             -3.3691            -2.0988            0.0059   -3.0790
+     PairNorm: L8 minus L4         -0.9276             -1.3314            -0.5239            0.0059   -1.6435
+PairNorm-Tiefeninteraktion          1.8063              1.2484             2.3642            0.0059    2.3160
+
+=== L8 MECHANISM ===
+                         Metrik  Epoche  GraphSAGE  PairNorm  Verhältnis  Positive Splits  Exaktes p (Holm)
+          Effektiver Ranganteil     400     0.0202    0.0840      4.1641               10            0.0078
+          Effektiver Ranganteil     600     0.0241    0.0888      3.6845               10            0.0078
+          Effektiver Ranganteil     800     0.0254    0.0921      3.6269               10            0.0078
+Normalisierte Dirichlet-Energie     400     0.0889    0.8867      9.9791               10            0.0078
+Normalisierte Dirichlet-Energie     600     0.2717    1.0010      3.6836               10            0.0078
+Normalisierte Dirichlet-Energie     800     0.4500    1.0377      2.3061               10            0.0078
+
+Saved: runs/amazon_ratings_fair_lr_800ep/amazon_ratings_final_performance_table.csv
+Saved: tables/amazon_ratings_final_performance.tex
+Saved: runs/amazon_ratings_fair_lr_800ep/amazon_ratings_final_depth_table.csv
+Saved: tables/amazon_ratings_final_depth_effect.tex
+Saved: runs/amazon_ratings_matched_lr_oversmoothing_800ep/amazon_ratings_final_mechanism_table.csv
+Saved: tables/amazon_ratings_final_mechanism_l8.tex
+Saved: runs/amazon_ratings_fair_lr_800ep/amazon_ratings_final_evidence_summary.txt

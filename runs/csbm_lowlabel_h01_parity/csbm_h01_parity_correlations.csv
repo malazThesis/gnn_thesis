@@ -1,0 +1,46 @@
+group,n,metric,spearman_correlation
+All paired runs,60,final_pairwise_delta,0.7376012909558955
+All paired runs,60,final_edge_delta,0.7334654701162868
+All paired runs,60,final_rank_delta,-0.5963127087595324
+All paired runs,60,best_pairwise_delta,0.7521884428361372
+All paired runs,60,best_edge_delta,0.681376483325539
+Feature signal 0.25,30,final_pairwise_delta,0.6998831128856944
+Feature signal 0.25,30,final_edge_delta,0.6978725964426777
+Feature signal 0.25,30,final_rank_delta,-0.5015121571747155
+Feature signal 0.25,30,best_pairwise_delta,0.7693576255277151
+Feature signal 0.25,30,best_edge_delta,0.6786609948760739
+Feature signal 0.50,30,final_pairwise_delta,0.7779235615606156
+Feature signal 0.50,30,final_edge_delta,0.7732170231587796
+Feature signal 0.50,30,final_rank_delta,-0.634934442495311
+Feature signal 0.50,30,best_pairwise_delta,0.7106872986772435
+Feature signal 0.50,30,best_edge_delta,0.6526399917212655
+Depth L5,10,final_pairwise_delta,-0.21884599572482324
+Depth L5,10,final_edge_delta,-0.012158110873601292
+Depth L5,10,final_rank_delta,-0.12766016417281356
+Depth L5,10,best_pairwise_delta,0.6808542089216723
+Depth L5,10,best_edge_delta,0.49848254581765294
+Depth L6,10,final_pairwise_delta,-0.054879068998719374
+Depth L6,10,final_edge_delta,-0.14024650966339397
+Depth L6,10,final_rank_delta,-0.2195162759948775
+Depth L6,10,best_pairwise_delta,-0.20122325299530439
+Depth L6,10,best_edge_delta,0.15244185832977605
+Depth L7,10,final_pairwise_delta,0.3100318272768329
+Depth L7,10,final_edge_delta,0.43161293601284584
+Depth L7,10,final_rank_delta,-0.2978737164032316
+Depth L7,10,best_pairwise_delta,0.23708316203522517
+Depth L7,10,best_edge_delta,0.1458973304832155
+Depth L8,10,final_pairwise_delta,-0.12972986097979458
+Depth L8,10,final_edge_delta,-0.47795211939924326
+Depth L8,10,final_rank_delta,0.40284535777936215
+Depth L8,10,best_pairwise_delta,0.006827887419989189
+Depth L8,10,best_edge_delta,0.4301569074593189
+Depth L9,10,final_pairwise_delta,-0.3292941923608177
+Depth L9,10,final_edge_delta,-0.4659823476804024
+Depth L9,10,final_rank_delta,0.055917881721648285
+Depth L9,10,best_pairwise_delta,0.5032609354948346
+Depth L9,10,best_edge_delta,0.03106548984536016
+Depth L10,10,final_pairwise_delta,0.4287037598659702
+Depth L10,10,final_edge_delta,0.2298846248556652
+Depth L10,10,final_rank_delta,-0.2298846248556652
+Depth L10,10,best_pairwise_delta,0.30444180048452957
+Depth L10,10,best_edge_delta,0.04349168578350422

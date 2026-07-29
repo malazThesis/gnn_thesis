@@ -1,0 +1,17 @@
+{
+  "dataset": "Cornell",
+  "model": "GCN",
+  "seed": 1,
+  "split_idx": 2,
+  "num_layers": 4,
+  "hidden_channels": 128,
+  "epochs": 200,
+  "learning_rate": 0.01,
+  "weight_decay": 0.0005,
+  "final_train_acc": 0.9425287356321839,
+  "final_val_acc": 0.3559322033898305,
+  "final_test_acc": 0.4594594594594595,
+  "best_epoch": 80,
+  "best_val_acc": 0.3898305084745763,
+  "best_test_acc_at_best_val": 0.4594594594594595
+}

@@ -1,0 +1,61 @@
+group,n,metric,spearman_correlation
+All paired runs,90,final_pairwise_delta,0.1307163804207299
+All paired runs,90,final_edge_delta,0.12116421957355546
+All paired runs,90,final_rank_delta,0.20740540970498447
+All paired runs,90,best_pairwise_delta,0.1369746926999131
+All paired runs,90,best_edge_delta,0.13853103614828893
+Feature signal 0.25,45,final_pairwise_delta,0.24569852857429617
+Feature signal 0.25,45,final_edge_delta,0.21781270147825987
+Feature signal 0.25,45,final_rank_delta,0.13151826254513574
+Feature signal 0.25,45,best_pairwise_delta,0.25459826062622265
+Feature signal 0.25,45,best_edge_delta,0.23548031769986208
+Feature signal 0.50,45,final_pairwise_delta,0.010411175901965735
+Feature signal 0.50,45,final_edge_delta,0.025434898089612492
+Feature signal 0.50,45,final_rank_delta,0.30166052708353885
+Feature signal 0.50,45,best_pairwise_delta,0.03162888881609843
+Feature signal 0.50,45,best_edge_delta,0.03182656937119905
+Homophily 0.1,30,final_pairwise_delta,0.5653311103389052
+Homophily 0.1,30,final_edge_delta,0.5765257857911608
+Homophily 0.1,30,final_rank_delta,-0.3266606296968169
+Homophily 0.1,30,best_pairwise_delta,0.5201046215117927
+Homophily 0.1,30,best_edge_delta,0.5695850870107623
+Homophily 0.5,30,final_pairwise_delta,0.054517135306085214
+Homophily 0.5,30,final_edge_delta,0.10636404357677033
+Homophily 0.5,30,final_rank_delta,0.22830441152670786
+Homophily 0.5,30,best_pairwise_delta,0.15175790317857188
+Homophily 0.5,30,best_edge_delta,0.31308411990066076
+Homophily 0.9,30,final_pairwise_delta,-0.3905007289934858
+Homophily 0.9,30,final_edge_delta,-0.38782453896040653
+Homophily 0.9,30,final_rank_delta,0.2673959874718387
+Homophily 0.9,30,best_pairwise_delta,-0.2767626525876162
+Homophily 0.9,30,best_edge_delta,-0.39741421991227394
+"Homophily 0.1, signal 0.25",15,final_pairwise_delta,0.6324580988122823
+"Homophily 0.1, signal 0.25",15,final_edge_delta,0.6450712232900202
+"Homophily 0.1, signal 0.25",15,final_rank_delta,-0.42163873254152157
+"Homophily 0.1, signal 0.25",15,best_pairwise_delta,0.6360618486630646
+"Homophily 0.1, signal 0.25",15,best_edge_delta,0.473893105377864
+"Homophily 0.1, signal 0.50",15,final_pairwise_delta,0.43369454205325564
+"Homophily 0.1, signal 0.50",15,final_edge_delta,0.4444472992942455
+"Homophily 0.1, signal 0.50",15,final_rank_delta,-0.18279687309682677
+"Homophily 0.1, signal 0.50",15,best_pairwise_delta,0.3691779986073168
+"Homophily 0.1, signal 0.50",15,best_edge_delta,0.5017953379128578
+"Homophily 0.5, signal 0.25",15,final_pairwise_delta,0.14285714285714285
+"Homophily 0.5, signal 0.25",15,final_edge_delta,0.15714285714285714
+"Homophily 0.5, signal 0.25",15,final_rank_delta,0.18571428571428572
+"Homophily 0.5, signal 0.25",15,best_pairwise_delta,0.2
+"Homophily 0.5, signal 0.25",15,best_edge_delta,0.26071428571428573
+"Homophily 0.5, signal 0.50",15,final_pairwise_delta,-0.017857142857142856
+"Homophily 0.5, signal 0.50",15,final_edge_delta,0.07857142857142857
+"Homophily 0.5, signal 0.50",15,final_rank_delta,0.33214285714285713
+"Homophily 0.5, signal 0.50",15,best_pairwise_delta,0.2392857142857143
+"Homophily 0.5, signal 0.50",15,best_edge_delta,0.36428571428571427
+"Homophily 0.9, signal 0.25",15,final_pairwise_delta,-0.1711781179121562
+"Homophily 0.9, signal 0.25",15,final_edge_delta,-0.22703624059928085
+"Homophily 0.9, signal 0.25",15,final_rank_delta,0.13874436925511607
+"Homophily 0.9, signal 0.25",15,best_pairwise_delta,-0.10450874567268484
+"Homophily 0.9, signal 0.25",15,best_edge_delta,-0.1513574937328539
+"Homophily 0.9, signal 0.50",15,final_pairwise_delta,-0.686942065185747
+"Homophily 0.9, signal 0.50",15,final_edge_delta,-0.5384624000544527
+"Homophily 0.9, signal 0.50",15,final_rank_delta,0.3613601488737523
+"Homophily 0.9, signal 0.50",15,best_pairwise_delta,-0.4239720558568282
+"Homophily 0.9, signal 0.50",15,best_edge_delta,-0.5581404279634193

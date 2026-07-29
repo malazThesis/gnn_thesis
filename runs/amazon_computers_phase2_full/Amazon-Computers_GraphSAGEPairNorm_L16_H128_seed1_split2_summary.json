@@ -1,0 +1,17 @@
+{
+  "dataset": "Amazon-Computers",
+  "model": "GraphSAGEPairNorm",
+  "seed": 1,
+  "split_idx": 2,
+  "num_layers": 16,
+  "hidden_channels": 128,
+  "epochs": 200,
+  "learning_rate": 0.01,
+  "weight_decay": 0.0005,
+  "final_train_acc": 0.865,
+  "final_val_acc": 0.722,
+  "final_test_acc": 0.7084737971192154,
+  "best_epoch": 194,
+  "best_val_acc": 0.738,
+  "best_test_acc_at_best_val": 0.7115384615384616
+}

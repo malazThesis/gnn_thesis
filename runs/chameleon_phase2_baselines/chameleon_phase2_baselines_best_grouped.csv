@@ -1,0 +1,2 @@
+dataset,model,num_layers,hidden_channels,mean_best_test_acc,std_best_test_acc,mean_best_val_acc,std_best_val_acc,mean_final_test_acc,std_final_test_acc,mean_best_epoch,std_best_epoch,num_splits
+Chameleon,GraphSAGE,8,64,0.42828947368421055,0.027989536034450847,0.4419753086419753,0.023349183761677366,0.4129385964912281,0.03384826566820307,163.9,20.25092590475803,10

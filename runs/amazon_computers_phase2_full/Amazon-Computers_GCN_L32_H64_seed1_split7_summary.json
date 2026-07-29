@@ -1,0 +1,17 @@
+{
+  "dataset": "Amazon-Computers",
+  "model": "GCN",
+  "seed": 1,
+  "split_idx": 7,
+  "num_layers": 32,
+  "hidden_channels": 64,
+  "epochs": 200,
+  "learning_rate": 0.01,
+  "weight_decay": 0.0005,
+  "final_train_acc": 0.315,
+  "final_val_acc": 0.324,
+  "final_test_acc": 0.3075390744713454,
+  "best_epoch": 60,
+  "best_val_acc": 0.366,
+  "best_test_acc_at_best_val": 0.3319031566043518
+}

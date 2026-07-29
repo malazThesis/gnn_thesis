@@ -1,0 +1,7 @@
+learning_rate	grid	output_dir	job_id	dependency
+0.0003	configs/amazon_ratings_fair_lr/amazon_ratings_lr_0p0003.csv	runs/amazon_ratings_fair_lr_800ep/lr_0p0003	3285905	none
+0.001	configs/amazon_ratings_fair_lr/amazon_ratings_lr_0p001.csv	runs/amazon_ratings_fair_lr_800ep/lr_0p001	3285945	afterok:3285905
+0.003	configs/amazon_ratings_fair_lr/amazon_ratings_lr_0p003.csv	runs/amazon_ratings_fair_lr_800ep/lr_0p003	3285946	afterok:3285945
+0.005	configs/amazon_ratings_fair_lr/amazon_ratings_lr_0p005.csv	runs/amazon_ratings_fair_lr_800ep/lr_0p005	3285947	afterok:3285946
+0.01	configs/amazon_ratings_fair_lr/amazon_ratings_lr_0p01.csv	runs/amazon_ratings_fair_lr_800ep/lr_0p01	3285948	afterok:3285947
+0.03	configs/amazon_ratings_fair_lr/amazon_ratings_lr_0p03.csv	runs/amazon_ratings_fair_lr_800ep/lr_0p03	3285949	afterok:3285948

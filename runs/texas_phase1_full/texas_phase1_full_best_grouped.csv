@@ -1,0 +1,2 @@
+dataset,model,num_layers,hidden_channels,mean_best_test_acc,std_best_test_acc,mean_best_val_acc,std_best_val_acc,mean_final_test_acc,std_final_test_acc,mean_best_epoch,std_best_epoch,num_splits
+Texas,GraphSAGE,2,64,0.7918918918918919,0.052608293047410576,0.8457627118644068,0.03950764686338326,0.7810810810810811,0.053221821577448425,138.2,40.848772591379316,10

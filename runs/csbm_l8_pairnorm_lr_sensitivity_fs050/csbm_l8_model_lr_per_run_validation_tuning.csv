@@ -1,0 +1,3 @@
+model,n,recovered_runs,test_at_best_val_mean,final_test_acc_mean,first_test_90_mean,lr_0p001_selected,lr_0p003_selected,lr_0p010_selected,lr_0p030_selected
+GraphSAGE,25,25,0.9973646593093872,0.9997881746292114,19.64,2,23,0,0
+GraphSAGEPairNorm,25,25,0.997458770275116,0.997317590713501,2.52,0,0,8,17

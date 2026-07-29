@@ -1,0 +1,17 @@
+{
+  "dataset": "Chameleon",
+  "model": "GCN",
+  "seed": 1,
+  "split_idx": 7,
+  "num_layers": 4,
+  "hidden_channels": 64,
+  "epochs": 200,
+  "learning_rate": 0.01,
+  "weight_decay": 0.0005,
+  "final_train_acc": 0.8379120879120879,
+  "final_val_acc": 0.25102880658436216,
+  "final_test_acc": 0.26535087719298245,
+  "best_epoch": 17,
+  "best_val_acc": 0.35253772290809327,
+  "best_test_acc_at_best_val": 0.30043859649122806
+}

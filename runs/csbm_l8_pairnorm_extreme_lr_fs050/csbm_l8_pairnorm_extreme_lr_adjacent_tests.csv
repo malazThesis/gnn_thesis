@@ -1,0 +1,4 @@
+lower_lr,upper_lr,mean_accuracy_change,positive_combinations,negative_combinations,ties,upper_only_recovered,lower_only_recovered,wilcoxon_pvalue,mcnemar_exact_pvalue,wilcoxon_holm_pvalue,mcnemar_holm_pvalue
+0.1,0.2,-9.411573410035512e-05,3,6,16,0,0,0.2710916369317352,1.0,0.8132749107952056,1.0
+0.2,0.3,4.7056674957284275e-05,6,4,15,0,0,0.6657709231765883,1.0,0.8132749107952056,1.0
+0.3,0.5,-0.00016470432281495028,3,5,17,0,0,0.29064627408073007,1.0,0.8132749107952056,1.0

@@ -1,0 +1,61 @@
+Saved: plots/csbm_l8_pairnorm_lr_phase/pairnorm_recovery_rate_by_lr.png
+Saved: plots/csbm_l8_pairnorm_lr_phase/pairnorm_recovery_speed_by_lr.png
+
+=== PairNorm learning-rate phase ===
+ learning_rate  n  final_recovered_runs  checkpoint_recovered_runs  collapsed_runs  final_recovery_rate  recovery_ci95_lower  recovery_ci95_upper  final_test_acc_mean  final_test_acc_std  test_at_best_val_mean  first_test_90_mean  first_test_90_median  epoch1_pairwise_mean  epoch1_retention_mean
+  0.0010000000 25                    25                         25               0         1.0000000000         0.8668077491         1.0000000000         0.9855293727        0.0141084547           0.9953411460       15.3600000000         15.0000000000          0.9989112902           0.9999869226
+  0.0030000000 25                    24                         25               0         0.9600000000         0.8045593626         0.9929037665         0.9728234959        0.0268212035           0.9961411357        5.8800000000          6.0000000000          0.9988579273           0.9999334982
+  0.0100000000 25                    25                         25               0         1.0000000000         0.8668077491         1.0000000000         0.9949881887        0.0051059064           0.9977411318        2.8400000000          3.0000000000          0.9983295798           0.9994045592
+  0.0300000000 25                    25                         25               0         1.0000000000         0.8668077491         1.0000000000         0.9988470030        0.0014255745           0.9987293530        2.4800000000          2.0000000000          0.9949236178           0.9959949485
+  0.0500000000 25                    25                         25               0         1.0000000000         0.8668077491         1.0000000000         0.9994117045        0.0008985390           0.9985881805        2.8000000000          3.0000000000          0.9921772552           0.9932457601
+  0.0700000000 25                    25                         25               0         1.0000000000         0.8668077491         1.0000000000         0.9997411180        0.0005116782           0.9983999467        3.1200000000          3.0000000000          0.9912373257           0.9923048861
+  0.1000000000 25                    25                         25               0         1.0000000000         0.8668077491         1.0000000000         0.9998587632        0.0003513051           0.9989411211        3.3200000000          3.0000000000          0.9914197898           0.9924876250
+
+=== Adjacent learning-rate tests ===
+    lower_lr     upper_lr  mean_accuracy_change  positive_combinations  negative_combinations  ties  upper_only_recovered  lower_only_recovered  wilcoxon_pvalue  mcnemar_exact_pvalue  wilcoxon_holm_pvalue  mcnemar_holm_pvalue
+0.0010000000 0.0030000000         -0.0127058768                      3                     22     0                     0                     1     0.0003113254          1.0000000000          0.0015566270         1.0000000000
+0.0030000000 0.0100000000          0.0221646929                     23                      2     0                     1                     0     0.0000321228          1.0000000000          0.0001927368         1.0000000000
+0.0100000000 0.0300000000          0.0038588142                     18                      3     4                     0                     0     0.0006161488          1.0000000000          0.0024645953         1.0000000000
+0.0300000000 0.0500000000          0.0005647016                     12                      5     8                     0                     0     0.0486410649          1.0000000000          0.1459231946         1.0000000000
+0.0500000000 0.0700000000          0.0003294134                      9                      3    13                     0                     0     0.0807958809          1.0000000000          0.1615917617         1.0000000000
+0.0700000000 0.1000000000          0.0001176453                      6                      3    16                     0                     0     0.2710916369          1.0000000000          0.2710916369         1.0000000000
+
+=== Stability comparison ===
+                    model  largest_fully_stable_lr                       reference
+                GraphSAGE             0.0050000000            25/25 final recovery
+        GraphSAGEPairNorm             0.1000000000            25/25 final recovery
+PairNorm stability factor            20.0000000000 PairNorm limit / baseline limit
+
+=== Individual thresholds ===
+ graph_seed  initialization_seed  successful_lr_count  largest_contiguous_success_lr  first_failure_lr  monotonic_success_pattern                 successful_learning_rates
+          1                   11                    7                          0.100               NaN                       True 0.001,0.003,0.010,0.030,0.050,0.070,0.100
+          1                   29                    7                          0.100               NaN                       True 0.001,0.003,0.010,0.030,0.050,0.070,0.100
+          1                   47                    7                          0.100               NaN                       True 0.001,0.003,0.010,0.030,0.050,0.070,0.100
+          1                   65                    7                          0.100               NaN                       True 0.001,0.003,0.010,0.030,0.050,0.070,0.100
+          1                   83                    7                          0.100               NaN                       True 0.001,0.003,0.010,0.030,0.050,0.070,0.100
+          2                   11                    7                          0.100               NaN                       True 0.001,0.003,0.010,0.030,0.050,0.070,0.100
+          2                   29                    7                          0.100               NaN                       True 0.001,0.003,0.010,0.030,0.050,0.070,0.100
+          2                   47                    7                          0.100               NaN                       True 0.001,0.003,0.010,0.030,0.050,0.070,0.100
+          2                   65                    7                          0.100               NaN                       True 0.001,0.003,0.010,0.030,0.050,0.070,0.100
+          2                   83                    7                          0.100               NaN                       True 0.001,0.003,0.010,0.030,0.050,0.070,0.100
+          3                   11                    6                          0.001             0.003                      False       0.001,0.010,0.030,0.050,0.070,0.100
+          3                   29                    7                          0.100               NaN                       True 0.001,0.003,0.010,0.030,0.050,0.070,0.100
+          3                   47                    7                          0.100               NaN                       True 0.001,0.003,0.010,0.030,0.050,0.070,0.100
+          3                   65                    7                          0.100               NaN                       True 0.001,0.003,0.010,0.030,0.050,0.070,0.100
+          3                   83                    7                          0.100               NaN                       True 0.001,0.003,0.010,0.030,0.050,0.070,0.100
+          4                   11                    7                          0.100               NaN                       True 0.001,0.003,0.010,0.030,0.050,0.070,0.100
+          4                   29                    7                          0.100               NaN                       True 0.001,0.003,0.010,0.030,0.050,0.070,0.100
+          4                   47                    7                          0.100               NaN                       True 0.001,0.003,0.010,0.030,0.050,0.070,0.100
+          4                   65                    7                          0.100               NaN                       True 0.001,0.003,0.010,0.030,0.050,0.070,0.100
+          4                   83                    7                          0.100               NaN                       True 0.001,0.003,0.010,0.030,0.050,0.070,0.100
+          5                   11                    7                          0.100               NaN                       True 0.001,0.003,0.010,0.030,0.050,0.070,0.100
+          5                   29                    7                          0.100               NaN                       True 0.001,0.003,0.010,0.030,0.050,0.070,0.100
+          5                   47                    7                          0.100               NaN                       True 0.001,0.003,0.010,0.030,0.050,0.070,0.100
+          5                   65                    7                          0.100               NaN                       True 0.001,0.003,0.010,0.030,0.050,0.070,0.100
+          5                   83                    7                          0.100               NaN                       True 0.001,0.003,0.010,0.030,0.050,0.070,0.100
+
+Saved: runs/csbm_l8_pairnorm_upper_lr_fs050/csbm_l8_pairnorm_lr_phase_run_level.csv
+Saved: runs/csbm_l8_pairnorm_upper_lr_fs050/csbm_l8_pairnorm_lr_phase_summary.csv
+Saved: runs/csbm_l8_pairnorm_upper_lr_fs050/csbm_l8_pairnorm_lr_phase_adjacent_tests.csv
+Saved: runs/csbm_l8_pairnorm_upper_lr_fs050/csbm_l8_pairnorm_lr_phase_thresholds.csv
+Saved: runs/csbm_l8_pairnorm_upper_lr_fs050/csbm_l8_pairnorm_vs_baseline_stability.csv

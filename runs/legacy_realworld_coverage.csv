@@ -1,0 +1,13 @@
+dataset,block,num_runs,num_configs,expected_configs,min_replicates,max_replicates,complete_config_grid
+Cora,phase1_baselines,12,12,12,1,1,True
+Cora,phase1_full,24,24,24,1,1,True
+Cora,phase2_baselines,54,18,18,3,3,True
+Cora,phase2_full,108,36,36,3,3,True
+CiteSeer,phase1_baselines,12,12,12,1,1,True
+CiteSeer,phase1_full,24,24,24,1,1,True
+CiteSeer,phase2_baselines,54,18,18,3,3,True
+CiteSeer,phase2_full,108,36,36,3,3,True
+PubMed,phase1_baselines,12,12,12,1,1,True
+PubMed,phase1_full,24,24,24,1,1,True
+PubMed,phase2_baselines,54,18,18,3,3,True
+PubMed,phase2_full,108,36,36,3,3,True

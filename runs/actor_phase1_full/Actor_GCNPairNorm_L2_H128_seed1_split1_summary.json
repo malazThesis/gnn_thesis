@@ -1,0 +1,17 @@
+{
+  "dataset": "Actor",
+  "model": "GCNPairNorm",
+  "seed": 1,
+  "split_idx": 1,
+  "num_layers": 2,
+  "hidden_channels": 128,
+  "epochs": 200,
+  "learning_rate": 0.01,
+  "weight_decay": 0.0005,
+  "final_train_acc": 0.8432017543859649,
+  "final_val_acc": 0.23601973684210525,
+  "final_test_acc": 0.24802631578947368,
+  "best_epoch": 5,
+  "best_val_acc": 0.29975328947368424,
+  "best_test_acc_at_best_val": 0.28618421052631576
+}

@@ -1,0 +1,17 @@
+{
+  "dataset": "Coauthor-CS",
+  "model": "GraphSAGEPairNorm",
+  "seed": 1,
+  "split_idx": 2,
+  "num_layers": 16,
+  "hidden_channels": 64,
+  "epochs": 200,
+  "learning_rate": 0.01,
+  "weight_decay": 0.0005,
+  "final_train_acc": 0.7133333333333334,
+  "final_val_acc": 0.452,
+  "final_test_acc": 0.5148006616095363,
+  "best_epoch": 198,
+  "best_val_acc": 0.52,
+  "best_test_acc_at_best_val": 0.5044772714310158
+}

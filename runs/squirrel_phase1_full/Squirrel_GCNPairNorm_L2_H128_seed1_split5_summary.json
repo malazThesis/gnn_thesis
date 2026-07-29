@@ -1,0 +1,17 @@
+{
+  "dataset": "Squirrel",
+  "model": "GCNPairNorm",
+  "seed": 1,
+  "split_idx": 5,
+  "num_layers": 2,
+  "hidden_channels": 128,
+  "epochs": 200,
+  "learning_rate": 0.01,
+  "weight_decay": 0.0005,
+  "final_train_acc": 0.735176282051282,
+  "final_val_acc": 0.22896634615384615,
+  "final_test_acc": 0.24975984630163303,
+  "best_epoch": 32,
+  "best_val_acc": 0.28185096153846156,
+  "best_test_acc_at_best_val": 0.2574447646493756
+}

@@ -1,0 +1,2 @@
+dataset,model,num_layers,hidden_channels,mean_best_test_acc,std_best_test_acc,mean_best_val_acc,std_best_val_acc,mean_final_test_acc,std_final_test_acc,mean_best_epoch,std_best_epoch,num_splits
+Wisconsin,GraphSAGE,2,128,0.807843137254902,0.0450933027729682,0.8412499999999999,0.03335936483541349,0.7784313725490196,0.029302629766614244,118.2,55.60335721279186,10

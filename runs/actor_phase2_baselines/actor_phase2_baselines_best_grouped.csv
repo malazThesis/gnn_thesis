@@ -1,0 +1,2 @@
+dataset,model,num_layers,hidden_channels,mean_best_test_acc,std_best_test_acc,mean_best_val_acc,std_best_val_acc,mean_final_test_acc,std_final_test_acc,mean_best_epoch,std_best_epoch,num_splits
+Actor,GCN,8,128,0.2681578947368421,0.010833422117684342,0.2736842105263158,0.008389232817262539,0.24947368421052635,0.017342040926679198,9.8,2.5298221281347035,10

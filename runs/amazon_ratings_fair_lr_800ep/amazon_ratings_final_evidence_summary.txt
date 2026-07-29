@@ -1,0 +1,36 @@
+Amazon-Ratings final evidence summary
+
+Matched learning rate:
+  learning_rate = 0.003
+  epochs = 800
+  splits = 10
+
+Depth degradation:
+  GraphSAGE depth loss:
+    2.7340 pp
+
+  PairNorm depth loss:
+    0.9276 pp
+
+  Absolute reduction:
+    1.8063 pp
+
+  Relative reduction:
+    66.07 %
+
+  Interaction exact Holm p:
+    0.0058593750
+
+  Interaction Cohen dz:
+    2.3160
+
+Mechanistic robustness:
+  Fixed epochs:
+    400, 600, 800
+
+  Metrics:
+    normalized Dirichlet energy
+    effective rank ratio
+
+  All reported L8 effects:
+    PairNorm > GraphSAGE on 10/10 splits

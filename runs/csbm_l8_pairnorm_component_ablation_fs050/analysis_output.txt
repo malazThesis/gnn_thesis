@@ -1,0 +1,47 @@
+Saved: plots/csbm_l8_pairnorm_component_ablation/recovery_rate_lr_0.03.png
+Saved: plots/csbm_l8_pairnorm_component_ablation/recovery_rate_lr_0.5.png
+
+=== ABLATIONSERGEBNISSE ===
+              model  learning_rate  n  final_recovered_runs  checkpoint_recovered_runs  collapsed_runs  partial_runs  numerical_failure_runs  final_test_acc_mean  final_test_acc_std  final_test_acc_min  test_at_best_val_mean  first_test_90_mean  first_test_90_median
+          GraphSAGE   0.0300000000 25                     2                          2              23             0                       0         0.5399293792        0.1381996438        0.4999999702           0.5399999714      116.0000000000        116.0000000000
+GraphSAGECenterNorm   0.0300000000 25                    25                         25               0             0                       0         0.9995764112        0.0006470547        0.9976470470           0.9987058282        3.3200000000          3.0000000000
+ GraphSAGEScaleNorm   0.0300000000 25                    25                         25               0             0                       0         0.9999293518        0.0001950966        0.9994117022           0.9967764258       44.8000000000         41.0000000000
+  GraphSAGEPairNorm   0.0300000000 25                    25                         25               0             0                       0         0.9988470030        0.0014255745        0.9941176176           0.9987293530        2.4800000000          2.0000000000
+GraphSAGECenterNorm   0.5000000000 25                    25                         25               0             0                       0         0.9953411198        0.0187835947        0.9064705372           0.9996940565        4.0000000000          4.0000000000
+ GraphSAGEScaleNorm   0.5000000000 25                     0                          0              25             0                       0         0.4999999702        0.0000000000        0.4999999702           0.4999999702                 NaN                   NaN
+  GraphSAGEPairNorm   0.5000000000 25                    25                         25               0             0                       0         0.9996469998        0.0007001344        0.9970588088           0.9970587850        7.8800000000          7.0000000000
+
+=== GEPAARTE VERGLEICHE ===
+ learning_rate             model_a             model_b  mean_accuracy_change_b_minus_a  b_only_recovered  a_only_recovered  both_recovered_n  mean_first90_change_b_minus_a  wilcoxon_pvalue  mcnemar_exact_pvalue  wilcoxon_holm_pvalue  mcnemar_holm_pvalue
+  0.0300000000           GraphSAGE GraphSAGECenterNorm                    0.4596470320                23                 0                 2                -113.0000000000     0.0000100862          0.0000002384          0.0000605169         0.0000016689
+  0.0300000000           GraphSAGE  GraphSAGEScaleNorm                    0.4599999726                23                 0                 2                 -79.0000000000     0.0000030348          0.0000002384          0.0000273135         0.0000016689
+  0.0300000000           GraphSAGE   GraphSAGEPairNorm                    0.4589176238                23                 0                 2                -114.0000000000     0.0000141701          0.0000002384          0.0000708506         0.0000016689
+  0.0300000000 GraphSAGECenterNorm  GraphSAGEScaleNorm                    0.0003529406                 0                 0                25                  41.4800000000     0.0199906450          1.0000000000          0.0599719351         1.0000000000
+  0.0300000000 GraphSAGECenterNorm   GraphSAGEPairNorm                   -0.0007294083                 0                 0                25                  -0.8400000000     0.0354649353          1.0000000000          0.0709298705         1.0000000000
+  0.0300000000  GraphSAGEScaleNorm   GraphSAGEPairNorm                   -0.0010823488                 0                 0                25                 -42.3200000000     0.0004168255          1.0000000000          0.0016673021         1.0000000000
+  0.5000000000 GraphSAGECenterNorm  GraphSAGEScaleNorm                   -0.4953411496                 0                25                 0                            NaN     0.0000062482          0.0000000596          0.0000437373         0.0000005364
+  0.5000000000 GraphSAGECenterNorm   GraphSAGEPairNorm                    0.0043058801                 0                 0                25                   3.8800000000     0.5065181778          1.0000000000          0.5065181778         1.0000000000
+  0.5000000000  GraphSAGEScaleNorm   GraphSAGEPairNorm                    0.4996470296                25                 0                 0                            NaN     0.0000054212          0.0000000596          0.0000433697         0.0000005364
+
+=== REPRÄSENTATIONSMETRIKEN EPOCH 1 UND 200 ===
+              model  learning_rate  epoch  pairwise_mean  class_margin_mean  rank_ratio_mean           embedding_norm_mean
+          GraphSAGE   0.0300000000      1   0.0000006890       0.0000000004     0.0289897325                346.8764666748
+          GraphSAGE   0.0300000000    200   0.0312041688       0.0605733383     0.0186621150             114189.3299912024
+GraphSAGECenterNorm   0.0300000000      1   0.9903059554       0.0122758961     0.6850972748                  0.0223299100
+GraphSAGECenterNorm   0.0300000000    200   0.9999389267       1.9657718886     0.0137522671         2758645596.0606250763
+GraphSAGECenterNorm   0.5000000000      1   0.9909198380       0.0160125041     0.7002196836              68256.7407812500
+GraphSAGECenterNorm   0.5000000000    200   0.9998656678       1.9567868094     0.0139113274 708604081782537600.0000000000
+  GraphSAGEPairNorm   0.0300000000      1   0.9949236178       0.0344450617     0.7161001277                  0.9567982292
+  GraphSAGEPairNorm   0.0300000000    200   0.9999301624       1.9460775970     0.0149244331                  0.9758009362
+  GraphSAGEPairNorm   0.5000000000      1   0.9947028995       0.0189697289     0.6887823629                  0.9517676520
+  GraphSAGEPairNorm   0.5000000000    200   0.9991838789       1.8904443293     0.0297849007                  0.9712998819
+ GraphSAGEScaleNorm   0.0300000000      1   0.0000001597      -0.0000000001     0.0296401913                  0.9999996567
+ GraphSAGEScaleNorm   0.0300000000    200   0.6997522116       1.3711872285     0.0101602693                  0.9718958020
+ GraphSAGEScaleNorm   0.5000000000      1   0.0000000596       0.0000000000     0.0118991655                  0.9999997091
+ GraphSAGEScaleNorm   0.5000000000    200   0.0000001621      -0.0000000000     0.0239520807                  0.9999998832
+
+Saved: runs/csbm_l8_pairnorm_component_ablation_fs050/csbm_l8_component_ablation_run_level.csv
+Saved: runs/csbm_l8_pairnorm_component_ablation_fs050/csbm_l8_component_ablation_summary.csv
+Saved: runs/csbm_l8_pairnorm_component_ablation_fs050/csbm_l8_component_ablation_paired_tests.csv
+Saved: runs/csbm_l8_pairnorm_component_ablation_fs050/csbm_l8_component_ablation_metric_run_level.csv
+Saved: runs/csbm_l8_pairnorm_component_ablation_fs050/csbm_l8_component_ablation_metric_summary.csv

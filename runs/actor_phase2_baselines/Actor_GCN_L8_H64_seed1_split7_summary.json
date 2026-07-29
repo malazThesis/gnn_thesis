@@ -1,0 +1,17 @@
+{
+  "dataset": "Actor",
+  "model": "GCN",
+  "seed": 1,
+  "split_idx": 7,
+  "num_layers": 8,
+  "hidden_channels": 64,
+  "epochs": 200,
+  "learning_rate": 0.01,
+  "weight_decay": 0.0005,
+  "final_train_acc": 0.37774122807017546,
+  "final_val_acc": 0.25945723684210525,
+  "final_test_acc": 0.2243421052631579,
+  "best_epoch": 16,
+  "best_val_acc": 0.28495065789473684,
+  "best_test_acc_at_best_val": 0.2611842105263158
+}

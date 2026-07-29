@@ -1,0 +1,17 @@
+{
+  "dataset": "Actor",
+  "model": "GATPairNorm",
+  "seed": 1,
+  "split_idx": 2,
+  "num_layers": 16,
+  "hidden_channels": 128,
+  "epochs": 200,
+  "learning_rate": 0.005,
+  "weight_decay": 0.0,
+  "final_train_acc": 0.25082236842105265,
+  "final_val_acc": 0.23478618421052633,
+  "final_test_acc": 0.2513157894736842,
+  "best_epoch": 74,
+  "best_val_acc": 0.25287828947368424,
+  "best_test_acc_at_best_val": 0.26710526315789473
+}

@@ -1,0 +1,2 @@
+dataset,model,num_layers,hidden_channels,mean_best_test_acc,std_best_test_acc,mean_best_val_acc,std_best_val_acc,mean_final_test_acc,std_final_test_acc,mean_best_epoch,std_best_epoch,num_splits
+Squirrel,GraphSAGEPairNorm,2,128,0.37271853986551395,0.015161627411785727,0.36778846153846156,0.009939612363826343,0.31950048030739675,0.01343487703135223,7.7,3.4657049948186747,10

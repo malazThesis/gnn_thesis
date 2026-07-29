@@ -1,0 +1,17 @@
+{
+  "dataset": "Coauthor-Physics",
+  "model": "GCN",
+  "seed": 1,
+  "split_idx": 3,
+  "num_layers": 4,
+  "hidden_channels": 64,
+  "epochs": 200,
+  "learning_rate": 0.01,
+  "weight_decay": 0.0005,
+  "final_train_acc": 1.0,
+  "final_val_acc": 0.934,
+  "final_test_acc": 0.9273006225474286,
+  "best_epoch": 30,
+  "best_val_acc": 0.948,
+  "best_test_acc_at_best_val": 0.9244386746525831
+}

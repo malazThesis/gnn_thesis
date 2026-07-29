@@ -1,0 +1,24 @@
+cluster_name: rwth_cn04
+scheduler: slurm
+partition: log_gpu_24gb
+
+default_resources:
+  gpus: 1
+  cpus_per_task: 8
+  memory_gb: 32
+  time_limit: "08:00:00"
+
+paths:
+  project_root: ~/gnn_thesis_cluster
+  logs_dir: ~/gnn_thesis_cluster/logs
+  runs_dir: ~/gnn_thesis_cluster/runs
+  plots_dir: ~/gnn_thesis_cluster/plots
+
+environment:
+  use_venv: true
+  venv_path: ~/venvs/gnn-thesis
+
+rules:
+  allowed_partition_only: true
+  no_heavy_training_on_login_node: true
+  use_slurm_for_training: true

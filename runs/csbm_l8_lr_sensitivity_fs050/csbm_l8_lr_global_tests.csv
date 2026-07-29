@@ -1,0 +1,3 @@
+test,statistic,degrees_of_freedom,pvalue
+Friedman final accuracy,59.75480769230771,3,6.631756531681548e-13
+Cochran Q recovery,63.391304347826086,3,1.1076533586750928e-13

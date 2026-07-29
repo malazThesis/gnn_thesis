@@ -1,0 +1,17 @@
+{
+  "dataset": "Chameleon",
+  "model": "GAT",
+  "seed": 1,
+  "split_idx": 3,
+  "num_layers": 32,
+  "hidden_channels": 128,
+  "epochs": 200,
+  "learning_rate": 0.005,
+  "weight_decay": 0.0,
+  "final_train_acc": 0.19963369963369965,
+  "final_val_acc": 0.205761316872428,
+  "final_test_acc": 0.20175438596491227,
+  "best_epoch": 2,
+  "best_val_acc": 0.3004115226337449,
+  "best_test_acc_at_best_val": 0.3048245614035088
+}

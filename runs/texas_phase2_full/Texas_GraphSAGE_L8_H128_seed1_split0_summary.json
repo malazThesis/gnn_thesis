@@ -1,0 +1,17 @@
+{
+  "dataset": "Texas",
+  "model": "GraphSAGE",
+  "seed": 1,
+  "split_idx": 0,
+  "num_layers": 8,
+  "hidden_channels": 128,
+  "epochs": 200,
+  "learning_rate": 0.01,
+  "weight_decay": 0.0005,
+  "final_train_acc": 0.9080459770114943,
+  "final_val_acc": 0.5932203389830508,
+  "final_test_acc": 0.5945945945945946,
+  "best_epoch": 85,
+  "best_val_acc": 0.7796610169491526,
+  "best_test_acc_at_best_val": 0.7567567567567568
+}

@@ -1,0 +1,2 @@
+dataset,model,num_layers,hidden_channels,mean_best_test_acc,std_best_test_acc,mean_best_val_acc,std_best_val_acc,mean_final_test_acc,std_final_test_acc,mean_best_epoch,std_best_epoch,num_splits
+Amazon-Computers,GraphSAGEPairNorm,8,128,0.823666870977628,0.014711863387530697,0.8417999999999999,0.013113182510571414,0.7951425068954949,0.030086128834189683,156.0,25.746628689770027,10

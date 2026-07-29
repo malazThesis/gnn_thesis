@@ -1,0 +1,3 @@
+model,selected_learning_rate,selection_rule,best_val_acc_mean,test_at_best_val_mean,final_test_acc_mean,recovery_rate,first_test_90_mean
+GraphSAGE,0.003,highest mean best-val accuracy,1.0,0.9973411297798157,0.9997881746292114,1.0,19.88
+GraphSAGEPairNorm,0.03,highest mean best-val accuracy,1.0,0.9987293529510498,0.9988470029830933,1.0,2.48

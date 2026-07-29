@@ -1,0 +1,17 @@
+{
+  "dataset": "Wisconsin",
+  "model": "GCN",
+  "seed": 1,
+  "split_idx": 6,
+  "num_layers": 16,
+  "hidden_channels": 64,
+  "epochs": 200,
+  "learning_rate": 0.01,
+  "weight_decay": 0.0005,
+  "final_train_acc": 0.5666666666666667,
+  "final_val_acc": 0.5125,
+  "final_test_acc": 0.5490196078431373,
+  "best_epoch": 97,
+  "best_val_acc": 0.55,
+  "best_test_acc_at_best_val": 0.5294117647058824
+}

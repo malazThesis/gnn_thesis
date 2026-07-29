@@ -1,0 +1,17 @@
+{
+  "dataset": "Coauthor-Physics",
+  "model": "GCNPairNorm",
+  "seed": 1,
+  "split_idx": 3,
+  "num_layers": 32,
+  "hidden_channels": 128,
+  "epochs": 200,
+  "learning_rate": 0.01,
+  "weight_decay": 0.0005,
+  "final_train_acc": 0.83,
+  "final_val_acc": 0.774,
+  "final_test_acc": 0.7683592482223468,
+  "best_epoch": 180,
+  "best_val_acc": 0.78,
+  "best_test_acc_at_best_val": 0.7664709527040982
+}

@@ -1,0 +1,39 @@
+#!/bin/bash
+#SBATCH --job-name=squ_p1_b
+#SBATCH --partition=log_gpu_24gb
+#SBATCH --nodes=1
+#SBATCH --gres=gpu:1
+#SBATCH --cpus-per-task=8
+#SBATCH --mem=32G
+#SBATCH --time=06:00:00
+#SBATCH --array=0-119%2
+#SBATCH --output=logs/%x_%A_%a.out
+#SBATCH --error=logs/%x_%A_%a.err
+
+set -euo pipefail
+
+source ~/venvs/gnn-thesis-gpu/bin/activate
+
+export TMPDIR=/work/log1/$USER/tmp
+export PIP_CACHE_DIR=/work/log1/$USER/cache/pip
+export TORCH_HOME=/work/log1/$USER/cache/torch
+export MPLCONFIGDIR=/work/log1/$USER/cache/matplotlib
+export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
+
+mkdir -p \
+  "$TMPDIR" \
+  "$PIP_CACHE_DIR" \
+  "$TORCH_HOME" \
+  "$MPLCONFIGDIR" \
+  /work/log1/$USER/pyg-data \
+  logs \
+  runs/squirrel_phase1_baselines
+
+cd /work/log1/$USER/gnn_thesis_cluster
+
+python scripts/run_realworld.py \
+  --grid configs/squirrel_phase1_baselines.csv \
+  --task-id "${SLURM_ARRAY_TASK_ID}" \
+  --epochs 200 \
+  --data-root /work/log1/$USER/pyg-data \
+  --out-dir runs/squirrel_phase1_baselines

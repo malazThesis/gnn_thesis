@@ -1,0 +1,2 @@
+dataset,model,num_layers,hidden_channels,mean_best_test_acc,std_best_test_acc,mean_best_val_acc,std_best_val_acc,mean_final_test_acc,std_final_test_acc,mean_best_epoch,std_best_epoch,num_splits
+Amazon-Computers,GCN,2,128,0.8373735825927062,0.005838768860591406,0.8512000000000001,0.01350555441290727,0.8214909592399632,0.012865886122506696,136.1,30.65017672597229,10

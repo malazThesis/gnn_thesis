@@ -1,0 +1,17 @@
+{
+  "dataset": "Squirrel",
+  "model": "GAT",
+  "seed": 1,
+  "split_idx": 5,
+  "num_layers": 16,
+  "hidden_channels": 64,
+  "epochs": 200,
+  "learning_rate": 0.005,
+  "weight_decay": 0.0,
+  "final_train_acc": 0.20392628205128205,
+  "final_val_acc": 0.18449519230769232,
+  "final_test_acc": 0.2132564841498559,
+  "best_epoch": 77,
+  "best_val_acc": 0.22596153846153846,
+  "best_test_acc_at_best_val": 0.19596541786743515
+}

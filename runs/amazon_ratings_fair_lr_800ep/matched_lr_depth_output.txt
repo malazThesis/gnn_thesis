@@ -1,0 +1,28 @@
+
+=== MATCHED-LR SPLIT EFFECTS ===
+split_idx graphsage_depth_change pairnorm_depth_change depth_interaction
+                                                                        
+        0          -0.0065327454         -0.0026130982      0.0039196472
+        1          -0.0195982362         -0.0115956231      0.0080026131
+        2          -0.0310305406         -0.0026130982      0.0284174424
+        3          -0.0290707170         -0.0133921280      0.0156785889
+        4          -0.0261309815         -0.0019598236      0.0241711579
+        5          -0.0320104524         -0.0161685448      0.0158419076
+        6          -0.0315204965         -0.0117589417      0.0197615548
+        7          -0.0259676629         -0.0050628777      0.0209047852
+        8          -0.0329903642         -0.0160052262      0.0169851380
+        9          -0.0385431978         -0.0115956231      0.0269475747
+
+=== MATCHED-LR TESTS ===
+                comparison  learning_rate  n_pairs  mean_difference  mean_difference_percentage_points  std_difference  median_difference  minimum_difference  maximum_difference  positive_pairs  negative_pairs  zero_pairs      ci95_low     ci95_high  paired_t_pvalue  wilcoxon_pvalue  exact_sign_flip_pvalue      cohen_dz  paired_t_holm_pvalue  wilcoxon_holm_pvalue  exact_sign_flip_holm_pvalue  baseline_mean_depth_loss  pairnorm_mean_depth_loss  absolute_depth_loss_reduction  relative_depth_loss_reduction
+     GraphSAGE L8 minus L4   0.0030000000       10    -0.0273395394                      -2.7339539441    0.0088792216      -0.0300506288       -0.0385431978       -0.0065327454               0              10           0 -0.0336913519 -0.0209877269     0.0000044657     0.0019531250            0.0019531250 -3.0790468617          0.0000133972          0.0058593750                 0.0058593750              0.0273395394              0.0092764984                   0.0180630410                   0.6606929510
+      PairNorm L8 minus L4   0.0030000000       10    -0.0092764984                      -0.9276498448    0.0056443071      -0.0115956231       -0.0161685448       -0.0019598236               0              10           0 -0.0133141925 -0.0052388044     0.0005661347     0.0019531250            0.0019531250 -1.6435141152          0.0005661347          0.0058593750                 0.0058593750              0.0273395394              0.0092764984                   0.0180630410                   0.6606929510
+PairNorm depth interaction   0.0030000000       10     0.0180630410                       1.8063040993    0.0077991940       0.0183733464        0.0039196472        0.0284174424              10               0           0  0.0124838337  0.0236422483     0.0000444955     0.0019531250            0.0019531250  2.3160138206          0.0000889910          0.0058593750                 0.0058593750              0.0273395394              0.0092764984                   0.0180630410                   0.6606929510
+
+GraphSAGE depth loss: 2.7340 pp
+PairNorm depth loss: 0.9276 pp
+Absolute reduction: 1.8063 pp
+Relative reduction: 66.07%
+
+Saved: runs/amazon_ratings_fair_lr_800ep/amazon_ratings_matched_lr_depth_800ep_detail.csv
+Saved: runs/amazon_ratings_fair_lr_800ep/amazon_ratings_matched_lr_depth_800ep_summary.csv

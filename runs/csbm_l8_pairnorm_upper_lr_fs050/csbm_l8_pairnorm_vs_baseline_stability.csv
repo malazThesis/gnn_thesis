@@ -1,0 +1,4 @@
+model,largest_fully_stable_lr,reference
+GraphSAGE,0.005,25/25 final recovery
+GraphSAGEPairNorm,0.1,25/25 final recovery
+PairNorm stability factor,20.0,PairNorm limit / baseline limit

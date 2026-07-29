@@ -1,0 +1,17 @@
+{
+  "dataset": "Amazon-Computers",
+  "model": "GAT",
+  "seed": 1,
+  "split_idx": 1,
+  "num_layers": 32,
+  "hidden_channels": 64,
+  "epochs": 200,
+  "learning_rate": 0.005,
+  "weight_decay": 0.0,
+  "final_train_acc": 0.1,
+  "final_val_acc": 0.096,
+  "final_test_acc": 0.10312595770763101,
+  "best_epoch": 149,
+  "best_val_acc": 0.096,
+  "best_test_acc_at_best_val": 0.10320257431811217
+}
