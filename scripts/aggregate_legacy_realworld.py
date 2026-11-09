@@ -235,13 +235,7 @@ def aggregate(frame):
 
 def select_best(grouped):
     return (
-        grouped.sort_values(
-            [
-                "mean_best_test_acc",
-                "mean_best_val_acc",
-            ],
-            ascending=[False, False],
-        )
+        grouped.sort_values(by=['mean_best_val_acc', 'num_layers', 'hidden_channels', 'model'], ascending=[False, True, True, True], kind='stable')
         .head(1)
         .reset_index(drop=True)
     )

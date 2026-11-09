@@ -50,13 +50,7 @@ def detect_block(path: Path):
 
 def best_row(df: pd.DataFrame) -> pd.Series:
     return (
-        df.sort_values(
-            [
-                "mean_best_test_acc",
-                "mean_best_val_acc",
-            ],
-            ascending=[False, False],
-        )
+        df.sort_values(by=['mean_best_val_acc', 'num_layers', 'hidden_channels', 'model'], ascending=[False, True, True, True], kind='stable')
         .iloc[0]
     )
 

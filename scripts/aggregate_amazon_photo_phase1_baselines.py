@@ -40,18 +40,12 @@ grouped["std_best_val_acc"] = grouped["std_best_val_acc"].fillna(0.0)
 grouped["std_final_test_acc"] = grouped["std_final_test_acc"].fillna(0.0)
 grouped["std_best_epoch"] = grouped["std_best_epoch"].fillna(0.0)
 
-grouped = grouped.sort_values(
-    by=["mean_best_test_acc", "mean_best_val_acc"],
-    ascending=[False, False]
-).reset_index(drop=True)
+grouped = grouped.sort_values(by=['mean_best_val_acc', 'num_layers', 'hidden_channels', 'model'], ascending=[False, True, True, True], kind='stable').reset_index(drop=True)
 
 grouped.to_csv(out_grouped_csv, index=False)
 
 best_df = (
-    grouped.sort_values(
-        by=["mean_best_test_acc", "mean_best_val_acc"],
-        ascending=[False, False]
-    )
+    grouped.sort_values(by=['mean_best_val_acc', 'num_layers', 'hidden_channels', 'model'], ascending=[False, True, True, True], kind='stable')
     .groupby("dataset", as_index=False)
     .first()
 )

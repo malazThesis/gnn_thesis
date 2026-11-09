@@ -38,18 +38,12 @@ grouped = (
       )
 )
 
-grouped = grouped.sort_values(
-    by=["dataset", "mean_best_test_acc", "mean_best_val_acc"],
-    ascending=[True, False, False]
-).reset_index(drop=True)
+grouped = grouped.sort_values(by=['dataset', 'mean_best_val_acc', 'num_layers', 'hidden_channels', 'model'], ascending=[True, False, True, True, True], kind='stable').reset_index(drop=True)
 
 grouped.to_csv(out_grouped_csv, index=False)
 
 best_grouped = (
-    grouped.sort_values(
-        by=["dataset", "mean_best_test_acc", "mean_best_val_acc"],
-        ascending=[True, False, False]
-    )
+    grouped.sort_values(by=['dataset', 'mean_best_val_acc', 'num_layers', 'hidden_channels', 'model'], ascending=[True, False, True, True, True], kind='stable')
     .groupby("dataset", as_index=False)
     .first()
 )

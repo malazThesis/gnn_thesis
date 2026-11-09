@@ -85,10 +85,7 @@ def main():
     ]
     grouped[std_columns] = grouped[std_columns].fillna(0.0)
 
-    grouped = grouped.sort_values(
-        ["mean_best_test_acc", "mean_best_val_acc"],
-        ascending=[False, False],
-    ).reset_index(drop=True)
+    grouped = grouped.sort_values(by=['mean_best_val_acc', 'num_layers', 'hidden_channels', 'model'], ascending=[False, True, True, True], kind='stable').reset_index(drop=True)
 
     grouped.to_csv(GROUPED_CSV, index=False)
 
